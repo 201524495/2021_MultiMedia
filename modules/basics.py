@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 
-import sys, multimedia2
+import sys, multimedia2, UI
 
 import PyQt5
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
-from PyQt5 import uic
+# from PyQt5 import uic
 
-ExampleUI = '../_uiFiles/example.ui'
+# ExampleUI = '../_uiFiles/example.ui'
 
 
 def showVideos(button):
@@ -16,11 +16,11 @@ def showVideos(button):
     multimedia2.run()
 
 
-class MainDialog(QDialog):
+class MainDialog(QDialog, UI.Ui_Form):
     def __init__(self):
-        QDialog.__init__(self, None)
-        uic.loadUi(ExampleUI, self)
-
+        QDialog.__init__(self, None, Qt.WindowStaysOnTopHint)
+        # uic.loadUi(ExampleUI, self)
+        self.setupUi(self)
         self.pushButton.clicked.connect(showVideos)
 
 
