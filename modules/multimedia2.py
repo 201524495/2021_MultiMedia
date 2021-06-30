@@ -1,13 +1,12 @@
 import numpy as np
 import cv2
+import random
 
 name1 = 'build_airplane.mp4'
 name2 = 'build_bed.mp4'
 name3 = 'build_bird.mp4'
 
 path_dir = '../video/'
-
-window_title = 'airplane'
 
 cap1 = cv2.VideoCapture(path_dir + name1)
 cap2 = cv2.VideoCapture(path_dir + name2)
@@ -20,30 +19,42 @@ print(type(width), type(height))
 
 
 def run():
+    x1 = 1;    y1 = 1
+    x2 = 1;    y2 = 1
+    x3 = 1;    y3 = 1
     while True:
 
-        if cap1.grab():
+        if cap1.grab():  # 비행기
             flg1, frame1 = cap1.retrieve()
             if flg1:
-                cv2.moveWindow('video1', 10, 10)
+                x1 += 3; y1 += 7
+                if x1 > 500:
+                    x1 = 1; y1 = 1
+                cv2.moveWindow('video1', x1, y1)
                 cv2.namedWindow('video1', cv2.WINDOW_NORMAL)
                 cv2.resizeWindow("video1", int(width / 3), int(height / 3))
                 cv2.setWindowProperty('video1', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
                 cv2.imshow('video1', frame1)
 
-        if cap2.grab():
+        if cap2.grab():  # 침대
             flg2, frame2 = cap2.retrieve()
             if flg2:
-                cv2.moveWindow('video2', 1000, 10)
+                x2 += 5
+                if x2 > 530:
+                    x2 = 1
+                cv2.moveWindow('video2', x2, y2)
                 cv2.namedWindow('video2', cv2.WINDOW_NORMAL)
                 cv2.resizeWindow("video2", int(width / 3), int(height / 3))
                 cv2.setWindowProperty('video2', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
                 cv2.imshow('video2', frame2)
 
-        if cap3.grab():
+        if cap3.grab():  # 새
             flg3, frame3 = cap3.retrieve()
             if flg3:
-                cv2.moveWindow('video3', 10, 500)
+                y3 += 10
+                if y3 > 500:
+                    y3 = 1
+                cv2.moveWindow('video3', x3, y3)
                 cv2.namedWindow('video3', cv2.WINDOW_NORMAL)
                 cv2.resizeWindow("video3", int(width / 3), int(height / 3))
                 cv2.setWindowProperty('video3', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
@@ -61,7 +72,6 @@ def run():
             # click the UI & press 'q' key
             print("press the q")
             break
-
 
         #
         # if cv2.waitKey(1) & ord('p'):
