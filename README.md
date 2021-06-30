@@ -34,3 +34,12 @@
 
    ![show project files](https://github.com/201524495/MultiMedia/blob/main/image/projcet.JPG)
 
+ ## Always On Top
+ 
+ ![OnTop](https://github.com/201524495/MultiMedia/blob/main/image/alwaysOnTop.JPG)
+ 
+ ## Keyboard Event
+ 
+ ![Keyboard Event](https://github.com/201524495/MultiMedia/blob/main/image/keyboardEvent.JPG)
+ 
+ 
