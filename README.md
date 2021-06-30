@@ -3,7 +3,7 @@
 
 ## UI file to py file
   
-  enter this code at terminal
+  **enter this code at terminal**
   
    ![typo this code](https://github.com/201524495/MultiMedia/blob/main/image/UItoPY.JPG)
 
@@ -14,3 +14,15 @@
 **after**
 
    ![using py file](https://github.com/201524495/MultiMedia/blob/main/image/after.JPG)
+
+
+## Make EXE file
+
+  **enter this code at terminal**
+  
+   ![]()
+
+ **Project File**
+
+   ![]()
+
