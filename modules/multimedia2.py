@@ -18,30 +18,30 @@ print('original size  w : %d, h: %d ' % (width, height))
 print(type(width), type(height))
 
 
-def run():
-    x1 = 1;    y1 = 1
-    x2 = 1;    y2 = 1
-    x3 = 1;    y3 = 1
+def run():  # 가로 x축   세로 y축
+    x1 = 1000;    y1 = 700
+    x2 = 10;    y2 = 10
+    x3 = 800;    y3 = 10
     while True:
 
         if cap1.grab():  # 비행기
             flg1, frame1 = cap1.retrieve()
             if flg1:
-                x1 += 3; y1 += 7
-                if x1 > 500:
-                    x1 = 1; y1 = 1
+                x1 -= 3; y1 -= 7
+                if x1 < 10 or y1 < 10:
+                    x1 = 1000; y1 = 700
                 cv2.moveWindow('video1', x1, y1)
-                cv2.namedWindow('video1', cv2.WINDOW_NORMAL)
-                cv2.resizeWindow("video1", int(width / 3), int(height / 3))
+                cv2.namedWindow('video1', cv2.WINDOW_NORMAL)  # custom size or full size
+                cv2.resizeWindow("video1", int(width / 3), int(height / 3))  # size
                 cv2.setWindowProperty('video1', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
                 cv2.imshow('video1', frame1)
 
         if cap2.grab():  # 침대
             flg2, frame2 = cap2.retrieve()
             if flg2:
-                x2 += 5
-                if x2 > 530:
-                    x2 = 1
+                x2 += 5; y2 += 2
+                if x2 > 930:
+                    x2 = 10; y2 = 10
                 cv2.moveWindow('video2', x2, y2)
                 cv2.namedWindow('video2', cv2.WINDOW_NORMAL)
                 cv2.resizeWindow("video2", int(width / 3), int(height / 3))
@@ -51,9 +51,9 @@ def run():
         if cap3.grab():  # 새
             flg3, frame3 = cap3.retrieve()
             if flg3:
-                y3 += 10
-                if y3 > 500:
-                    y3 = 1
+                x3 -= 7; y3 += 10
+                if y3 > 700:
+                    x3 = 800;y3 = 10
                 cv2.moveWindow('video3', x3, y3)
                 cv2.namedWindow('video3', cv2.WINDOW_NORMAL)
                 cv2.resizeWindow("video3", int(width / 3), int(height / 3))
