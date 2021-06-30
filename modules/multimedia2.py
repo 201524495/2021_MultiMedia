@@ -51,10 +51,21 @@ def run():
 
         InfiniteLoop()
 
-        if cv2.waitKey(1) & 0xFF == ord('q'):
+        if cv2.waitKey(10) == 32:
+            # click the Space bar to Stop Videos
+            print("press the Space bar")
+            cv2.waitKey(0)
+
+        if cv2.waitKey(10) & 0xFF == ord('q'):
             # keystroke latency (1ms)
             # click the UI & press 'q' key
+            print("press the q")
             break
+
+
+        #
+        # if cv2.waitKey(1) & ord('p'):
+        #     cv2.waitKey(0)
 
     cv2.destroyAllWindows()
 
