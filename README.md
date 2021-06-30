@@ -9,11 +9,11 @@
    
       pyuic5 -x _uiFiles/example.ui -o modules/UI.py
 
-**before**
+**before** : using UI
 
    ![using ui file](https://github.com/201524495/MultiMedia/blob/main/image/before.JPG)
 
-**after**
+**after** : using PY
 
    ![using py file](https://github.com/201524495/MultiMedia/blob/main/image/after.JPG)
 
