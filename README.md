@@ -4,8 +4,10 @@
 ## UI file to py file
   
   **enter this code at terminal**
-  
+   
    ![Make PY file](https://github.com/201524495/MultiMedia/blob/main/image/UItoPY.JPG)
+   
+      pyuic5 -x _uiFiles/example.ui -o modules/UI.py
 
 **before**
 
@@ -23,7 +25,11 @@
   move to "modules" folder -> typo this code
   
    ![Make EXE file](https://github.com/201524495/MultiMedia/blob/main/image/makeEXE.JPG)
-
+   
+    cd modules
+    
+    pyinstaller -w -F basics.py
+    
  **Project File**
 
    ![show project files](https://github.com/201524495/MultiMedia/blob/main/image/projcet.JPG)
