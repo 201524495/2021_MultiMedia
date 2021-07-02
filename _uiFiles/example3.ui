@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>397</width>
     <height>300</height>
    </rect>
   </property>
@@ -14,17 +14,17 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="0">
+   <item row="2" column="0">
     <widget class="QPushButton" name="back_pushButton">
      <property name="text">
       <string>Move Main UI</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="0">
+   <item row="1" column="0">
     <widget class="QPushButton" name="move_pushButton">
      <property name="text">
-      <string>Move Sub Sub UI</string>
+      <string>Move SubSub UI</string>
      </property>
     </widget>
    </item>
