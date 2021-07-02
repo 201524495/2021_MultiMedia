@@ -1,14 +1,17 @@
 # -*- coding: utf-8 -*-
 
-import sys, multimedia2, UI
-import PyQt5
-from PyQt5.QtGui import *
-from PyQt5.QtCore import *
-from PyQt5.QtWidgets import *
-from PyQt5 import uic
-from PyQt5 import QtWidgets
-from PyQt5.uic import loadUi
 
+import multimedia2
+import sys
+import time
+
+from PyQt5 import QtWidgets
+from PyQt5 import uic
+from PyQt5.QtWidgets import *
+from PyQt5.uic import loadUi
+from PyQt5.QtCore import QThread, pyqtSignal
+
+TIME_LIMIT = 100
 ExampleUI = '../_uiFiles/example.ui'
 Example3UI = '../_uiFiles/example3.ui'
 Example4UI = '../_uiFiles/example4.ui'
@@ -16,7 +19,7 @@ Example4UI = '../_uiFiles/example4.ui'
 
 def moveSubClass():
     print("Move Sub UI")
-    widget.setCurrentIndex(widget.currentIndex()+1)
+    widget.setCurrentIndex(widget.currentIndex() + 1)
 
 
 def showVideos():
@@ -30,7 +33,7 @@ def addVideo():
 
 def backButton():
     print("Move Back UI")
-    widget.setCurrentIndex(widget.currentIndex()-1)
+    widget.setCurrentIndex(widget.currentIndex() - 1)
 
 
 # def moveSSubClass():
@@ -63,6 +66,16 @@ class subSubClass(QDialog):
         super().__init__()
         uic.loadUi(Example4UI, self)
         self.back_pushButton.clicked.connect(backButton)
+        # show UI the Drone Location
+        self.drone_1_label.setText("Drone 1\n  X location : %d , Y location : %d \n"
+                                   % (multimedia2.max, multimedia2.min))
+        self.drone_1_label.repaint()
+        self.drone_2_label.setText("Drone 2\n  X location : %d , Y location : %d \n"
+                                   % (2100, 410))
+        self.drone_2_label.repaint()
+        self.drone_3_label.setText("Drone 3\n  X location : %d , Y location : %d \n"
+                                   % (5610, 710))
+        self.drone_3_label.repaint()
 
 
 if __name__ == "__main__":
