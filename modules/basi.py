@@ -28,6 +28,17 @@ def addVideo():
     print("Add Video")
 
 
+def backButton():
+    print("Move Back UI")
+    widget.setCurrentIndex(widget.currentIndex()-1)
+
+
+# def moveSSubClass():
+#     print("Move SSub Class")
+#     widget.setCurrentIndex(widget.currentIndex()+1)
+
+
+# main class
 class MainWindow(QDialog):  # , UI.Ui_Form):
     def __init__(self):
         super(MainWindow, self).__init__()
@@ -37,16 +48,7 @@ class MainWindow(QDialog):  # , UI.Ui_Form):
         self.move_pushButton.clicked.connect(moveSubClass)
 
 
-def backButton():
-    print("Move Back UI")
-    widget.setCurrentIndex(widget.currentIndex()-1)
-
-
-def moveSSubClass():
-    print("Move SSub Class")
-    widget.setCurrentIndex(widget.currentIndex()+1)
-
-
+# sub class
 class subClass(QDialog):
     def __init__(self):
         super().__init__()
@@ -55,6 +57,7 @@ class subClass(QDialog):
         self.move_pushButton.clicked.connect(moveSubClass)
 
 
+# sub sub class
 class subSubClass(QDialog):
     def __init__(self):
         super().__init__()
