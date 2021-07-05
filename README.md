@@ -43,3 +43,10 @@
  ![Keyboard Event](https://github.com/201524495/MultiMedia/blob/main/image/keyboardEvent.JPG)
  
  
+ ## Mouse Tracking
+
+ ![Clicked Code](https://github.com/201524495/MultiMedia/blob/main/image/mouseClicked.JPG)
+
+ ![Show UI](https://github.com/201524495/MultiMedia/blob/main/image/location_X_Y.JPG)
+ 
+ 
