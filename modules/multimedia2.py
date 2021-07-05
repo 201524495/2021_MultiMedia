@@ -1,6 +1,4 @@
-import numpy as np
 import cv2
-import random
 
 name1 = 'build_airplane.mp4'
 name2 = 'build_bed.mp4'
@@ -76,12 +74,9 @@ def stopVideos():
 
 
 def initial():
-    x1 = 1000;
-    y1 = 700  # drone 1
-    x2 = 10;
-    y2 = 10  # drone 2
-    x3 = 800;
-    y3 = 10  # drone 3
+    x1 = 1000; y1 = 700  # drone 1
+    x2 = 10;   y2 = 10  # drone 2
+    x3 = 800;  y3 = 10  # drone 3
     return x1, x2, x3, y1, y2, y3
 
 
@@ -92,29 +87,23 @@ def printLocation(x1, x2, x3, y1, y2, y3):
 
 
 def drone_3(x3, y3):
-    x3 -= 7;
-    y3 += 10
+    x3 -= 7; y3 += 10
     if y3 > 700:
-        x3 = 800;
-        y3 = 10
+        x3 = 800; y3 = 10
     return x3, y3
 
 
 def drone_2(x2, y2):
-    x2 += 5;
-    y2 += 2
+    x2 += 5; y2 += 2
     if x2 > 930:
-        x2 = 10;
-        y2 = 10
+        x2 = 10; y2 = 10
     return x2, y2
 
 
 def drone_1(x1, y1):
-    x1 -= 3;
-    y1 -= 7
+    x1 -= 3; y1 -= 7
     if x1 < 10 or y1 < 10:
-        x1 = 1000;
-        y1 = 700
+        x1 = 1000; y1 = 700
     return x1, y1
 
 

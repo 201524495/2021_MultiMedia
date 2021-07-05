@@ -3,13 +3,11 @@
 
 import multimedia2
 import sys
-import time
 
 from PyQt5 import QtWidgets
 from PyQt5 import uic
 from PyQt5.QtWidgets import *
 from PyQt5.uic import loadUi
-from PyQt5.QtCore import QThread, pyqtSignal
 
 
 TIME_LIMIT = 100
