@@ -36,9 +36,9 @@ def backButton():
     widget.setCurrentIndex(widget.currentIndex() - 1)
 
 
-# def moveSSubClass():
-#     print("Move SSub Class")
-#     widget.setCurrentIndex(widget.currentIndex()+1)
+def moveSSubClass():
+    print("Move SSub Class")
+    widget.setCurrentIndex(widget.currentIndex()+2)
 
 
 # main class
@@ -46,9 +46,9 @@ class MainWindow(QDialog):  # , UI.Ui_Form):
     def __init__(self):
         super(MainWindow, self).__init__()
         loadUi(ExampleUI, self)
-        self.show_pushButton.clicked.connect(showVideos)
-        self.addVideo_pushButton.clicked.connect(addVideo)
-        self.move_pushButton.clicked.connect(moveSubClass)
+        self.show_pushButton.clicked.connect(showVideos)         # 동영상
+        self.addVideo_pushButton.clicked.connect(moveSSubClass)  # 1개 액티비티 뛰어 넘기
+        self.move_pushButton.clicked.connect(moveSubClass)       # 다음 액티비티 이동
 
 
 # sub class
@@ -68,7 +68,7 @@ class subSubClass(QDialog):
         self.back_pushButton.clicked.connect(backButton)
         # show UI the Drone Location
         self.drone_1_label.setText("Drone 1\n  X location : %d , Y location : %d \n"
-                                   % (multimedia2.max, multimedia2.min))
+                                   % (0, 0))
         self.drone_1_label.repaint()
         self.drone_2_label.setText("Drone 2\n  X location : %d , Y location : %d \n"
                                    % (2100, 410))
