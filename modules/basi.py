@@ -11,10 +11,12 @@ from PyQt5.QtWidgets import *
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import QThread, pyqtSignal
 
+
 TIME_LIMIT = 100
 ExampleUI = '../_uiFiles/example.ui'
 Example3UI = '../_uiFiles/example3.ui'
 Example4UI = '../_uiFiles/example4.ui'
+x1, y1, x2, y2, x3, y3 = multimedia2.initial()
 
 
 def moveSubClass():
@@ -38,7 +40,7 @@ def backButton():
 
 def moveSSubClass():
     print("Move SSub Class")
-    widget.setCurrentIndex(widget.currentIndex()+2)
+    widget.setCurrentIndex(widget.currentIndex() + 2)
 
 
 # main class
@@ -46,9 +48,9 @@ class MainWindow(QDialog):  # , UI.Ui_Form):
     def __init__(self):
         super(MainWindow, self).__init__()
         loadUi(ExampleUI, self)
-        self.show_pushButton.clicked.connect(showVideos)         # 동영상
+        self.show_pushButton.clicked.connect(showVideos)  # 동영상
         self.addVideo_pushButton.clicked.connect(moveSSubClass)  # 1개 액티비티 뛰어 넘기
-        self.move_pushButton.clicked.connect(moveSubClass)       # 다음 액티비티 이동
+        self.move_pushButton.clicked.connect(moveSubClass)  # 다음 액티비티 이동
 
 
 # sub class
@@ -66,16 +68,14 @@ class subSubClass(QDialog):
         super().__init__()
         uic.loadUi(Example4UI, self)
         self.back_pushButton.clicked.connect(backButton)
+        self.setMouseTracking(True)
         # show UI the Drone Location
-        self.drone_1_label.setText("Drone 1\n  X location : %d , Y location : %d \n"
-                                   % (0, 0))
-        self.drone_1_label.repaint()
-        self.drone_2_label.setText("Drone 2\n  X location : %d , Y location : %d \n"
-                                   % (2100, 410))
-        self.drone_2_label.repaint()
-        self.drone_3_label.setText("Drone 3\n  X location : %d , Y location : %d \n"
-                                   % (5610, 710))
-        self.drone_3_label.repaint()
+
+    def mouseMoveEvent(self, event):
+        txt = "Mouse 위치 ; x={0},y={1}, global={2},{3}".format(event.x(), event.y(), event.globalX(), event.globalY())
+        self.drone_1_label.setText(txt)
+        self.drone_2_label.setText(txt)
+        self.drone_3_label.setText(txt)
 
 
 if __name__ == "__main__":
