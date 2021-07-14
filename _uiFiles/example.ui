@@ -24,6 +24,20 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="stop_pushButton">
+       <property name="text">
+        <string>Stop Videos</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="exit_pushButton">
+       <property name="text">
+        <string>Exit Videos</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="addVideo_pushButton">
        <property name="text">
         <string>Add Video</string>
