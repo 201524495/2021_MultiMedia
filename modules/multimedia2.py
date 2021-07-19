@@ -15,7 +15,7 @@ import basi
 
 
 def SplitEnter(result_1, result_2, result_3):
-    return result_1.split(), result_2.split(), result_3.split()
+    return result_1.split(), result_2.split(), result_3.split()  # split Enter symbol "\n"
 
 
 def run(result_1, result_2, result_3):  # 가로 x축   세로 y축    examples
@@ -124,12 +124,21 @@ def drone_1(x1, y1):
 
 
 def InfiniteLoop(cap1, cap2, cap3):
-    if cap1.get(cv2.CAP_PROP_POS_FRAMES) == cap1.get(cv2.CAP_PROP_FRAME_COUNT):
-        cap1.set(cv2.CAP_PROP_POS_FRAMES, 0)
+    if cap1.get(cv2.CAP_PROP_POS_FRAMES) == cap1.get(cv2.CAP_PROP_FRAME_COUNT):  # 현재 프레임과 총 프레임이 같으면 ( 동영상이 종료 되면)
+        cap1.set(cv2.CAP_PROP_POS_FRAMES, 0)  # 현재 프레임을 0번째 프레임으로 설정한다.
     if cap2.get(cv2.CAP_PROP_POS_FRAMES) == cap2.get(cv2.CAP_PROP_FRAME_COUNT):
         cap2.set(cv2.CAP_PROP_POS_FRAMES, 0)
     if cap3.get(cv2.CAP_PROP_POS_FRAMES) == cap3.get(cv2.CAP_PROP_FRAME_COUNT):
         cap3.set(cv2.CAP_PROP_POS_FRAMES, 0)
+
+
+def CheckVideoEnding(cap1, cap2, cap3):
+    if cap1.get(cv2.CAP_PROP_POS_FRAMES) == cap1.get(cv2.CAP_PROP_FRAME_COUNT):
+        pass
+    if cap2.get(cv2.CAP_PROP_POS_FRAMES) == cap2.get(cv2.CAP_PROP_FRAME_COUNT):
+        pass
+    if cap3.get(cv2.CAP_PROP_POS_FRAMES) == cap3.get(cv2.CAP_PROP_FRAME_COUNT):
+        pass
 
 # class main:
 #     run()
