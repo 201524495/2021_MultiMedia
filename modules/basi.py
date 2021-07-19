@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-
-
-import multimedia2
+from modules import multimedia2
 import sys
 
 from PyQt5 import QtWidgets
@@ -9,12 +7,13 @@ from PyQt5 import uic
 from PyQt5.QtWidgets import *
 from PyQt5.uic import loadUi
 
-
 TIME_LIMIT = 100
 ExampleUI = '../_uiFiles/example.ui'
 Example3UI = '../_uiFiles/example3.ui'
 Example4UI = '../_uiFiles/example4.ui'
-x1, y1, x2, y2, x3, y3 = multimedia2.initial()
+
+global result_1, result_2, result_3
+# x1, y1, x2, y2, x3, y3 = multimedia2.initial()
 
 
 def moveSubClass():
@@ -22,9 +21,9 @@ def moveSubClass():
     widget.setCurrentIndex(widget.currentIndex() + 1)
 
 
-def showVideos():
-    print("Show Videos")
-    multimedia2.run()
+def stopVideos():
+    print("Stop Videos")
+    multimedia2.cv2.waitKey(0)
 
 
 def addVideo():
@@ -46,9 +45,52 @@ class MainWindow(QDialog):  # , UI.Ui_Form):
     def __init__(self):
         super(MainWindow, self).__init__()
         loadUi(ExampleUI, self)
-        self.show_pushButton.clicked.connect(showVideos)  # 동영상
+        self.show_pushButton.clicked.connect(self.showVideos)  # 동영상 재생
+        self.stop_pushButton.clicked.connect(stopVideos)  # 동영상 일시정지
+        self.exit_pushButton.clicked.connect(self.exitVideos)  # 동영상 종료
         self.addVideo_pushButton.clicked.connect(moveSSubClass)  # 1개 액티비티 뛰어 넘기
         self.move_pushButton.clicked.connect(moveSubClass)  # 다음 액티비티 이동
+        self.open_pushButton_1.clicked.connect(self.fileOpen1)  # 동영상 선택
+        self.open_pushButton_2.clicked.connect(self.fileOpen2)  # 동영상 선택
+        self.open_pushButton_3.clicked.connect(self.fileOpen3)  # 동영상 선택
+
+    def fileOpen1(self):
+        filename1 = QtWidgets.QFileDialog.getOpenFileNames(self, 'Open Files For Drone_1')
+        filename_1 = ''.join(filename1[0])
+        self.plainTextEdit_1.appendPlainText(filename_1)
+        print(filename_1)
+
+    def fileOpen2(self):
+        filename2 = QtWidgets.QFileDialog.getOpenFileNames(self, 'Open Files For Drone_2')
+        filename_2 = ''.join(filename2[0])
+        self.plainTextEdit_2.appendPlainText(filename_2)
+        print(filename_2)
+
+    def fileOpen3(self):
+        filename3 = QtWidgets.QFileDialog.getOpenFileNames(self, 'Open Files For Drone_3')
+        filename_3 = ''.join(filename3[0])
+        self.plainTextEdit_3.appendPlainText(filename_3)
+        print(filename_3)
+
+    def exitVideos(self):
+        print("Exit Videos")
+        result_1, result_2, result_3 = self.getText()
+        print("drone_1 : " + result_1)
+        print("drone_2 : " + result_2)
+        print("drone_3 : " + result_3)
+        print(type("abc"), type('abc'))
+
+    def showVideos(self):
+        print("Show Videos")
+        result_1, result_2, result_3 = self.getText()
+        # print(result_1, result_2, result_3)
+        multimedia2.run(result_1, result_2, result_3)
+
+    def getText(self):
+        result_1 = self.plainTextEdit_1.toPlainText()
+        result_2 = self.plainTextEdit_2.toPlainText()
+        result_3 = self.plainTextEdit_3.toPlainText()
+        return result_1, result_2, result_3
 
 
 # sub class
