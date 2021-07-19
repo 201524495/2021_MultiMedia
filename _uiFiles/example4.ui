@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>437</width>
-    <height>507</height>
+    <height>276</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,21 +17,21 @@
    <item row="1" column="0">
     <widget class="QLabel" name="drone_1_label">
      <property name="text">
-      <string>TextLabel</string>
+      <string>Dron_1 Position</string>
      </property>
     </widget>
    </item>
    <item row="2" column="0">
     <widget class="QLabel" name="drone_2_label">
      <property name="text">
-      <string>TextLabel</string>
+      <string>Dron_2 Position</string>
      </property>
     </widget>
    </item>
    <item row="3" column="0">
     <widget class="QLabel" name="drone_3_label">
      <property name="text">
-      <string>TextLabel</string>
+      <string>Dron_3 Position</string>
      </property>
     </widget>
    </item>
