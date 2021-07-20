@@ -14,72 +14,79 @@ import basi
 # cap3 = cv2.VideoCapture(path_dir + name3)
 
 
-def SplitEnter(result_1, result_2, result_3):
-    return result_1.split(), result_2.split(), result_3.split()  # split Enter symbol "\n"
+def SplitEnter(res1, res2, res3):
+    return res1.split(), res2.split(), res3.split()  # split Enter symbol "\n"
 
 
-def run(result_1, result_2, result_3):  # 가로 x축   세로 y축    examples
-    x1, x2, x3, y1, y2, y3 = initial()
+def Length(len1, len2, len3):
+    return len(len1), len(len2), len(len3)
 
-    result1, result2, result3 = SplitEnter(result_1, result_2, result_3)
 
-    for i in range(0, 2):
-        print(i)
-        cap1 = cv2.VideoCapture(result1[i])
-        cap2 = cv2.VideoCapture(result2[i])
-        cap3 = cv2.VideoCapture(result3[i])
-        print(result1[i], result2[i], result3[i])
-        width = cap1.get(cv2.CAP_PROP_FRAME_WIDTH)
-        height = cap1.get(cv2.CAP_PROP_FRAME_HEIGHT)
-        print('original size  w : %d, h: %d ' % (width, height))
-        print(type(width), type(height))
+def WidthHeight(cap1):
+    return cap1.get(cv2.CAP_PROP_FRAME_WIDTH), cap1.get(cv2.CAP_PROP_FRAME_HEIGHT)
 
-        while True:
-            if cap1.grab():  # 비행기
-                flg1, frame1 = cap1.retrieve()
-                if flg1:
-                    x1, y1 = drone_1(x1, y1)
-                    cv2.moveWindow('video1', x1, y1)  # Location of Drone
-                    cv2.namedWindow('video1', cv2.WINDOW_NORMAL)  # custom size or full size
-                    cv2.resizeWindow("video1", int(width / 3), int(height / 3))  # size
-                    cv2.setWindowProperty('video1', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
-                    cv2.imshow('video1', frame1)
 
-            if cap2.grab():  # 침대
-                flg2, frame2 = cap2.retrieve()
-                if flg2:
-                    x2, y2 = drone_2(x2, y2)
-                    cv2.moveWindow('video2', x2, y2)
-                    cv2.namedWindow('video2', cv2.WINDOW_NORMAL)
-                    cv2.resizeWindow("video2", int(width / 3), int(height / 3))
-                    cv2.setWindowProperty('video2', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
-                    cv2.imshow('video2', frame2)
+def run(res1, res2, res3):  # Videos path (type str)
+    x1, x2, x3, y1, y2, y3 = initial()  # initialize videos location
+    i_1 = 0;    i_2 = 0;    i_3 = 0
+    result1, result2, result3 = SplitEnter(res1, res2, res3)  # split string with new line (type is array)
+    len_res1, len_res2, len_res3 = Length(result1, result2, result3)  # length of each array  (type is int)
 
-            if cap3.grab():  # 새
-                flg3, frame3 = cap3.retrieve()
-                if flg3:
-                    x3, y3 = drone_3(x3, y3)
-                    cv2.moveWindow('video3', x3, y3)
-                    cv2.namedWindow('video3', cv2.WINDOW_NORMAL)
-                    cv2.resizeWindow("video3", int(width / 3), int(height / 3))
-                    cv2.setWindowProperty('video3', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
-                    cv2.imshow('video3', frame3)
+    cap1 = cv2.VideoCapture(result1[i_1])
+    cap2 = cv2.VideoCapture(result2[i_2])
+    cap3 = cv2.VideoCapture(result3[i_3])
+    width, height = WidthHeight(cap1)
 
-            # InfiniteLoop(cap1, cap2, cap3)  #
-            # printLocation(x1, x2, x3, y1, y2, y3)
-            stopVideos()  #
+    print(result1[i_1], result2[i_2], result3[i_3])
+    print('original size  w : %d, h: %d ' % (width, height))
+    print(type(width), type(height))
 
-            if cv2.waitKey(10) & 0xFF == ord('q'):
-                # keystroke latency (10ms)
-                # click the UI & press 'q' key
-                print("press the q")
-                break
+    while True:
+        if cap1.grab():  #
+            flg1, frame1 = cap1.retrieve()  # 영상을 한 frame씩 읽어오기
+            if flg1:
+                x1, y1 = drone_1(x1, y1)
+                cv2.moveWindow('video1', x1, y1)  # Location of Drone
+                cv2.namedWindow('video1', cv2.WINDOW_NORMAL)  # custom size or full size
+                cv2.resizeWindow("video1", int(width / 3), int(height / 3))  # size
+                cv2.setWindowProperty('video1', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+                cv2.imshow('video1', frame1)
 
-            #
-            # if cv2.waitKey(1) & ord('p'):
-            #     cv2.waitKey(0)
+        if cap2.grab():  #
+            flg2, frame2 = cap2.retrieve()
+            if flg2:
+                x2, y2 = drone_2(x2, y2)
+                cv2.moveWindow('video2', x2, y2)
+                cv2.namedWindow('video2', cv2.WINDOW_NORMAL)
+                cv2.resizeWindow("video2", int(width / 3), int(height / 3))
+                cv2.setWindowProperty('video2', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+                cv2.imshow('video2', frame2)
 
-        cv2.destroyAllWindows()
+        if cap3.grab():  #
+            flg3, frame3 = cap3.retrieve()
+            if flg3:
+                x3, y3 = drone_3(x3, y3)
+                cv2.moveWindow('video3', x3, y3)
+                cv2.namedWindow('video3', cv2.WINDOW_NORMAL)
+                cv2.resizeWindow("video3", int(width / 3), int(height / 3))
+                cv2.setWindowProperty('video3', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+                cv2.imshow('video3', frame3)
+
+        # InfiniteLoop(cap1, cap2, cap3)  #
+        # printLocation(x1, x2, x3, y1, y2, y3)
+        stopVideos()  #
+
+        if cv2.waitKey(10) & 0xFF == ord('q'):
+            # keystroke latency (10ms)
+            # click the UI & press 'q' key
+            print("press the q")
+            break
+
+        #
+        # if cv2.waitKey(1) & ord('p'):
+        #     cv2.waitKey(0)
+
+    cv2.destroyAllWindows()
 
 
 def stopVideos():
@@ -97,9 +104,9 @@ def initial():
 
 
 def printLocation(x1, x2, x3, y1, y2, y3):
-    print("drone1 X Location : %d , Y Location : %d \n" % (x1, y1))
-    print("drone2 X Location : %d , Y Location : %d \n" % (x2, y2))
-    print("drone3 X Location : %d , Y Location : %d \n" % (x3, y3))
+    print("drone1 X Location : %d , Y Location : %d" % (x1, y1))
+    print("drone2 X Location : %d , Y Location : %d" % (x2, y2))
+    print("drone3 X Location : %d , Y Location : %d" % (x3, y3))
 
 
 def drone_3(x3, y3):
@@ -132,13 +139,19 @@ def InfiniteLoop(cap1, cap2, cap3):
         cap3.set(cv2.CAP_PROP_POS_FRAMES, 0)
 
 
-def CheckVideoEnding(cap1, cap2, cap3):
+def CheckVideoEnding_1(cap1, i_1):
     if cap1.get(cv2.CAP_PROP_POS_FRAMES) == cap1.get(cv2.CAP_PROP_FRAME_COUNT):
-        pass
+        return True
+
+
+def CheckVideoEnding_2(cap2, i_2):
     if cap2.get(cv2.CAP_PROP_POS_FRAMES) == cap2.get(cv2.CAP_PROP_FRAME_COUNT):
-        pass
+        return True
+
+
+def CheckVideoEnding_3(cap3, i_3):
     if cap3.get(cv2.CAP_PROP_POS_FRAMES) == cap3.get(cv2.CAP_PROP_FRAME_COUNT):
-        pass
+        return True
 
 # class main:
 #     run()

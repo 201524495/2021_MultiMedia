@@ -159,6 +159,19 @@
     <string>Show Videos</string>
    </property>
   </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>360</y>
+     <width>301</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&quot;q&quot; 키 동영상 종료, &quot;space&quot;키 동영상 일시 정지</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-from modules import multimedia2
+import threading
+
+from modules import multimedia2, example00
 import sys
 
 from PyQt5 import QtWidgets
@@ -78,13 +80,23 @@ class MainWindow(QDialog):  # , UI.Ui_Form):
         print("drone_1 : " + result_1)
         print("drone_2 : " + result_2)
         print("drone_3 : " + result_3)
-        print(type("abc"), type('abc'))
+        print(type(result_1))
 
     def showVideos(self):
         print("Show Videos")
-        result_1, result_2, result_3 = self.getText()
-        # print(result_1, result_2, result_3)
-        multimedia2.run(result_1, result_2, result_3)
+        try:
+            result_1, result_2, result_3 = self.getText()
+            print(result_1)
+            print(result_2)
+            print(result_3)
+            # multimedia2.run(result_1, result_2, result_3)
+            t= threading.Thread(target=self.running, args=(result_1, result_2))
+            t.start()
+        except Exception as e:
+            print(e)
+
+    def running(self, result_1, result_2):
+        example00.run(result_1, 0)
 
     def getText(self):
         result_1 = self.plainTextEdit_1.toPlainText()
