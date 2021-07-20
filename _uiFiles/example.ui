@@ -173,6 +173,19 @@
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>open_pushButton_1</tabstop>
+  <tabstop>open_pushButton_2</tabstop>
+  <tabstop>open_pushButton_3</tabstop>
+  <tabstop>show_pushButton</tabstop>
+  <tabstop>move_pushButton</tabstop>
+  <tabstop>plainTextEdit_2</tabstop>
+  <tabstop>addVideo_pushButton</tabstop>
+  <tabstop>plainTextEdit_3</tabstop>
+  <tabstop>exit_pushButton</tabstop>
+  <tabstop>stop_pushButton</tabstop>
+  <tabstop>plainTextEdit_1</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
