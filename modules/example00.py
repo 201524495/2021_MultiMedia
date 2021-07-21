@@ -62,7 +62,7 @@ def run(res1, res2, res3):  # Videos path (type str)
         if CheckVideoEnding(cap3):  # 동영상이 종료되면
             i_3 += 1  # 번호를 1단계 올리고
             i_3 %= len_res3  # 비디오 수 만큼 재생한다.
-            cap3 = cv2.VideoCapture(result2[i_3])  # 새로운 path로 적용한다.
+            cap3 = cv2.VideoCapture(result3[i_3])  # 새로운 path로 적용한다.
         if cap3.grab():  #
             flg3, frame3 = cap3.retrieve()  # 영상을 한 frame씩 읽어오기
             if flg3:
@@ -99,7 +99,7 @@ def initial():
     x1 = 1000;    y1 = 700  # drone 1
     x2 = 10;    y2 = 10  # drone 2
     x3 = 800;    y3 = 10  # drone 3
-    return x1, x2, x3, y1, y2, y3
+    return x1, y1, x2, y2, x3, y3
 
 
 def printLocation(x1, x2, x3, y1, y2, y3):
@@ -109,7 +109,7 @@ def printLocation(x1, x2, x3, y1, y2, y3):
 
 
 def drone_3(x3, y3):
-    x3 -= 2;    y3 += 2
+    y3 += 2
     if y3 > 700:
         x3 = 800;        y3 = 10
     return x3, y3
