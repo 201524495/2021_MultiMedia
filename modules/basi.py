@@ -1,21 +1,17 @@
 # -*- coding: utf-8 -*-
-import threading
-
-from modules import multimedia2, example00
+import UI, UI3, UI4
+import example00
 import sys
+# import multimedia2
 
 from PyQt5 import QtWidgets
-from PyQt5 import uic
 from PyQt5.QtWidgets import *
+from PyQt5 import uic
 from PyQt5.uic import loadUi
 
-TIME_LIMIT = 100
-ExampleUI = '../_uiFiles/example.ui'
-Example3UI = '../_uiFiles/example3.ui'
-Example4UI = '../_uiFiles/example4.ui'
-
-global result_1, result_2, result_3
-# x1, y1, x2, y2, x3, y3 = multimedia2.initial()
+# ExampleUI = '../_uiFiles/example.ui'
+# Example3UI = '../_uiFiles/example3.ui'
+# Example4UI = '../_uiFiles/example4.ui'
 
 
 def moveSubClass():
@@ -25,7 +21,8 @@ def moveSubClass():
 
 def stopVideos():
     print("Stop Videos")
-    multimedia2.cv2.waitKey(0)
+    # multimedia2.cv2.waitKey(0)
+    example00.cv2.waitKey(0)
 
 
 def addVideo():
@@ -43,10 +40,13 @@ def moveSSubClass():
 
 
 # main class
-class MainWindow(QDialog):  # , UI.Ui_Form):
+class MainWindow(QDialog, UI.Ui_Form):
     def __init__(self):
-        super(MainWindow, self).__init__()
-        loadUi(ExampleUI, self)
+        # super(MainWindow, self).__init__()
+        # loadUi(ExampleUI, self)
+        QDialog.__init__(self, None)
+        self.setupUi(self)
+
         self.show_pushButton.clicked.connect(self.showVideos)  # 동영상 재생
         self.stop_pushButton.clicked.connect(stopVideos)  # 동영상 일시정지
         self.exit_pushButton.clicked.connect(self.exitVideos)  # 동영상 종료
@@ -57,8 +57,8 @@ class MainWindow(QDialog):  # , UI.Ui_Form):
         self.open_pushButton_3.clicked.connect(self.fileOpen3)  # 동영상 선택
 
     def fileOpen1(self):
-        filename1 = QtWidgets.QFileDialog.getOpenFileNames(self, 'Open Files For Drone_1')
-        filename_1 = ''.join(filename1[0])
+        filename1 = QtWidgets.QFileDialog.getOpenFileNames(self, 'Open Files For Drone_1')  # type == list
+        filename_1 = ''.join(filename1[0])  # type == string
         self.plainTextEdit_1.appendPlainText(filename_1)
         print(filename_1)
 
@@ -102,19 +102,23 @@ class MainWindow(QDialog):  # , UI.Ui_Form):
 
 
 # sub class
-class subClass(QDialog):
+class subClass(QDialog, UI3.Ui_Form):
     def __init__(self):
-        super().__init__()
-        uic.loadUi(Example3UI, self)
+        # super().__init__()
+        # uic.loadUi(Example3UI, self)
+        QDialog.__init__(self, None)
+        self.setupUi(self)
         self.back_pushButton.clicked.connect(backButton)
         self.move_pushButton.clicked.connect(moveSubClass)
 
 
 # sub sub class
-class subSubClass(QDialog):
+class subSubClass(QDialog, UI4.Ui_Form):
     def __init__(self):
-        super().__init__()
-        uic.loadUi(Example4UI, self)
+        # super().__init__()
+        # uic.loadUi(Example4UI, self)
+        QDialog.__init__(self, None)
+        self.setupUi(self)
         self.back_pushButton.clicked.connect(backButton)
         self.setMouseTracking(True)
         # show UI the Drone Location
