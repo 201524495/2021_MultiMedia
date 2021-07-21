@@ -34,7 +34,7 @@ def run(res1, res2, res3):  # Videos path (type str)
         if CheckVideoEnding(cap1):  # 동영상이 종료되면
             i_1 += 1  # 번호를 1단계 올리고
             i_1 %= len_res1  # 비디오 수 만큼 재생한다.
-            cap1 = cv2.VideoCapture(result1[i_1])  # 적용한다.
+            cap1 = cv2.VideoCapture(result1[i_1])  # 새로운 path로 적용한다.
         if cap1.grab():  #
             flg1, frame1 = cap1.retrieve()  # 영상을 한 frame씩 읽어오기
             if flg1:
@@ -62,7 +62,7 @@ def run(res1, res2, res3):  # Videos path (type str)
         if CheckVideoEnding(cap3):  # 동영상이 종료되면
             i_3 += 1  # 번호를 1단계 올리고
             i_3 %= len_res3  # 비디오 수 만큼 재생한다.
-            cap3 = cv2.VideoCapture(result2[i_3])  # 적용한다.
+            cap3 = cv2.VideoCapture(result2[i_3])  # 새로운 path로 적용한다.
         if cap3.grab():  #
             flg3, frame3 = cap3.retrieve()  # 영상을 한 frame씩 읽어오기
             if flg3:
