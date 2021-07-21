@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from PyQt5.QtCore import Qt
+
 import UI, UI3, UI4
 import example00
 import sys
@@ -58,19 +60,19 @@ class MainWindow(QDialog, UI.Ui_Form):
 
     def fileOpen1(self):
         filename1 = QtWidgets.QFileDialog.getOpenFileNames(self, 'Open Files For Drone_1')  # type == list
-        filename_1 = ''.join(filename1[0])  # type == string
+        filename_1 = '\n'.join(filename1[0])  # type == string
         self.plainTextEdit_1.appendPlainText(filename_1)
         print(filename_1)
 
     def fileOpen2(self):
         filename2 = QtWidgets.QFileDialog.getOpenFileNames(self, 'Open Files For Drone_2')
-        filename_2 = ''.join(filename2[0])
+        filename_2 = '\n'.join(filename2[0])
         self.plainTextEdit_2.appendPlainText(filename_2)
         print(filename_2)
 
     def fileOpen3(self):
         filename3 = QtWidgets.QFileDialog.getOpenFileNames(self, 'Open Files For Drone_3')
-        filename_3 = ''.join(filename3[0])
+        filename_3 = '\n'.join(filename3[0])
         self.plainTextEdit_3.appendPlainText(filename_3)
         print(filename_3)
 
@@ -100,6 +102,14 @@ class MainWindow(QDialog, UI.Ui_Form):
         result_3 = self.plainTextEdit_3.toPlainText()
         return result_1, result_2, result_3
 
+    def keyPressEvent(self, e):
+        if e.key() == Qt.Key_Escape:  # Main UI에서 ESC 클릭시 화면 날라가는 현상 발생
+            print("ESC")
+            pass  # pass 해둠으로써 그냥 넘어가게끔 만듦.
+        elif e.key() == Qt.Key_F:
+            print("F")
+        elif e.key() == Qt.Key_N:
+            print("N")
 
 # sub class
 class subClass(QDialog, UI3.Ui_Form):

@@ -75,10 +75,10 @@ def run(res1, res2, res3):  # Videos path (type str)
 
         stopVideos()  #
 
-        if cv2.waitKey(10) & 0xFF == ord('q'):
+        if cv2.waitKey(10) & 0xFF == 27:  # q 보다는 ESC가 더 직관적이고 깔끔하게 잘라짐
             # keystroke latency (10ms)
-            # click the UI & press 'q' key
-            print("press the q")
+            # click the UI & press 'ESC' key
+            print("press the ESC")
             break
 
         #

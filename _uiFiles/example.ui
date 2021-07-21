@@ -169,7 +169,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>&quot;q&quot; 키 동영상 종료, &quot;space&quot;키 동영상 일시 정지</string>
+    <string>&quot;ESC&quot; 키 동영상 종료, &quot;space&quot;키 동영상 일시 정지</string>
    </property>
   </widget>
  </widget>
