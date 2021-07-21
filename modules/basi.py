@@ -90,13 +90,9 @@ class MainWindow(QDialog):  # , UI.Ui_Form):
             print(result_2)
             print(result_3)
             # multimedia2.run(result_1, result_2, result_3)
-            t= threading.Thread(target=self.running, args=(result_1, result_2))
-            t.start()
+            example00.run(result_1, result_2, result_3)
         except Exception as e:
             print(e)
-
-    def running(self, result_1, result_2):
-        example00.run(result_1, 0)
 
     def getText(self):
         result_1 = self.plainTextEdit_1.toPlainText()
