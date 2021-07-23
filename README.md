@@ -67,3 +67,13 @@
   
   3rd sentence is "Append Later Finding"
   
+
+## File Size Down
+
+  ![File Size Down](https://github.com/201524495/2021_MultiMedia/blob/main/image/sizeDownCode.JPG)
+  
+    pyinstaller -F -w --exclude pandas, --exclude numpy basi.py
+    
+  ![Result](https://github.com/201524495/2021_MultiMedia/blob/main/image/fileSize.JPG)
+
+  we can Size Down 290MB -> 57MB
