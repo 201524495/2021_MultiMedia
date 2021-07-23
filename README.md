@@ -76,4 +76,8 @@
     
   ![Result](https://github.com/201524495/2021_MultiMedia/blob/main/image/fileSize.JPG)
 
-  we can Size Down 290MB -> 57MB
+  ~~we can Size Down 290MB -> 57MB~~
+  
+  * But we use cv2, it need numpy.  so other method apply to reduce size...
+  
+  
