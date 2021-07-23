@@ -86,6 +86,8 @@
   
   ![Eorror with latest version](https://github.com/201524495/2021_MultiMedia/blob/main/image/ErrorWithVirtualEnv.JPG)
   
+      error: (-27:Null pointer) NULL window: 'video_1' in function 'cvMoveWindow'
+  
   ![checkVersion](https://github.com/201524495/2021_MultiMedia/blob/main/image/openCVversion.JPG)
   
   latest version occured with my code.\
