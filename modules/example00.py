@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import cv2
 
 from basi import *
@@ -39,11 +40,11 @@ def run(res1, res2, res3):  # Videos path (type str)
             flg1, frame1 = cap1.retrieve()  # 영상을 한 frame씩 읽어오기
             if flg1:
                 x1, y1 = drone_1(x1, y1)  # 지워질 내용
-                cv2.moveWindow('video1', x1, y1)  # Location of Drone
-                cv2.namedWindow('video1', cv2.WINDOW_NORMAL)  # custom size or full size
-                cv2.resizeWindow("video1", int(width / 3), int(height / 3))  # size
-                cv2.setWindowProperty('video1', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
-                cv2.imshow('video1', frame1)
+                cv2.moveWindow("video_1", x1, y1)  # Location of Drone
+                cv2.namedWindow("video_1", cv2.WINDOW_NORMAL)  # custom size or full size
+                cv2.resizeWindow("video_1", int(width / 3), int(height / 3))  # size
+                cv2.setWindowProperty("video_1", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+                cv2.imshow("video_1", frame1)
 
         if CheckVideoEnding(cap2):  # 동영상이 종료되면
             i_2 += 1  # 번호를 1단계 올리고
