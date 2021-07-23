@@ -80,7 +80,10 @@
   
   * But we use cv2, it need numpy.  so other method apply to reduce size...
   
+  
   ### Fix
+  
+  * Make Virtual Enviroment in PyCharm
   
   ![In Virtual](https://github.com/201524495/2021_MultiMedia/blob/main/image/sizeDownCodeVirtual.JPG)
   
