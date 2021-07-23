@@ -80,4 +80,17 @@
   
   * But we use cv2, it need numpy.  so other method apply to reduce size...
   
+  ### Fix
   
+  ![In Virtual](https://github.com/201524495/2021_MultiMedia/blob/main/image/sizeDownCodeVirtual.JPG)
+  
+  ![Eorror with latest version](https://github.com/201524495/2021_MultiMedia/blob/main/image/ErrorWithVirtualEnv.JPG)
+  
+  ![checkVersion](https://github.com/201524495/2021_MultiMedia/blob/main/image/openCVversion.JPG)
+  
+  latest version occured with my code.\
+  so call back last version.
+  
+  * Result
+  
+  ![Result](https://github.com/201524495/2021_MultiMedia/blob/main/image/SizeDown.JPG)
