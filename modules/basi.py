@@ -1,15 +1,17 @@
 # -*- coding: utf-8 -*-
-from PyQt5.QtCore import Qt
-
-import UI, UI3, UI4
-import example00
 import sys
-# import multimedia2
 
 from PyQt5 import QtWidgets
+from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import *
-from PyQt5 import uic
-from PyQt5.uic import loadUi
+
+import UI
+import UI3
+import UI4
+import example00
+
+
+# import multimedia2
 
 # ExampleUI = '../_uiFiles/example.ui'
 # Example3UI = '../_uiFiles/example3.ui'
