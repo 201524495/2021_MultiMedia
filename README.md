@@ -60,7 +60,10 @@
   ![File Open](https://github.com/201524495/2021_MultiMedia/blob/main/image/fileOpen.JPG)
   
   we have to read path in Edit Text Box.
+  
   1st sentence is "Find File Path"
+  
   2nd sentence is "Convert List to String"
+  
   3rd sentence is "Append Later Finding"
   
