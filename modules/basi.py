@@ -113,6 +113,7 @@ class MainWindow(QDialog, UI.Ui_Form):
         elif e.key() == Qt.Key_N:
             print("N")
 
+
 # sub class
 class subClass(QDialog, UI3.Ui_Form):
     def __init__(self):
