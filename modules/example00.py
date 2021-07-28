@@ -15,8 +15,8 @@ def WidthHeight(cap):
     return cap.get(cv2.CAP_PROP_FRAME_WIDTH), cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
 
 
-def Inside(xLocation, yLocation):
-    if xLocation > 0 and yLocation > 0:
+def Inside(xLocation, yLocation): #  calibration 했을 때 나온 결과가 숫자로 들어가야 한다.
+    if (xLocation > -425 and yLocation > -240) and (xLocation < 1919 and yLocation < 1040):
         return True
 
 
@@ -36,6 +36,10 @@ def run(res1, res2, res3):  # Videos path (type str)
     print(width, height)  # 1280 720
 
     while True:
+        x1, y1 = drone_1(x1, y1)  # 지워질 내용
+        x2, y2 = drone_2(x2, y2)  # 지워질 내용
+        x3, y3 = drone_3(x3, y3)  # 지워질 내용
+
         if Inside(x1, y1):
             if CheckVideoEnding(cap1):  # 동영상이 종료되면
                 i_1 += 1  # 번호를 1단계 올리고
@@ -44,13 +48,12 @@ def run(res1, res2, res3):  # Videos path (type str)
             if cap1.grab():  #
                 flg1, frame1 = cap1.retrieve()  # 영상을 한 frame씩 읽어오기
                 if flg1:
-
-                    x1, y1 = drone_1(x1, y1)  # 지워질 내용
                     cv2.moveWindow("video_1", x1, y1)  # Location of Drone
                     cv2.namedWindow("video_1", cv2.WINDOW_NORMAL)  # custom size or full size
                     cv2.resizeWindow("video_1", int(width / 3), int(height / 3))  # size
                     cv2.setWindowProperty("video_1", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
                     cv2.imshow("video_1", frame1)
+
         if Inside(x2, y2):
             if CheckVideoEnding(cap2):  # 동영상이 종료되면
                 i_2 += 1  # 번호를 1단계 올리고
@@ -59,12 +62,12 @@ def run(res1, res2, res3):  # Videos path (type str)
             if cap2.grab():  #
                 flg2, frame2 = cap2.retrieve()  # 영상을 한 frame씩 읽어오기
                 if flg2:
-                    x2, y2 = drone_2(x2, y2)  # 지워질 내용
                     cv2.moveWindow('video2', x2, y2)  # Location of Drone
                     cv2.namedWindow('video2', cv2.WINDOW_NORMAL)  # custom size or full size
                     cv2.resizeWindow("video2", int(width / 3), int(height / 3))  # size
                     cv2.setWindowProperty('video2', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
                     cv2.imshow('video2', frame2)
+
         if Inside(x3, y3):
             if CheckVideoEnding(cap3):  # 동영상이 종료되면
                 i_3 += 1  # 번호를 1단계 올리고
@@ -73,7 +76,6 @@ def run(res1, res2, res3):  # Videos path (type str)
             if cap3.grab():  #
                 flg3, frame3 = cap3.retrieve()  # 영상을 한 frame씩 읽어오기
                 if flg3:
-                    x3, y3 = drone_3(x3, y3)  # 지워질 내용
                     cv2.moveWindow('video3', x3, y3)  # Location of Drone
                     cv2.namedWindow('video3', cv2.WINDOW_NORMAL)  # custom size or full size
                     cv2.resizeWindow("video3", int(width / 3), int(height / 3))  # size
@@ -91,7 +93,9 @@ def run(res1, res2, res3):  # Videos path (type str)
         #
         # if cv2.waitKey(1) & ord('p'):
         #     cv2.waitKey(0)
-
+    cap1.release()
+    cap2.release()
+    cap3.release()
     cv2.destroyAllWindows()
 
 
@@ -103,7 +107,7 @@ def stopVideos():
 
 
 def initial():
-    x1 = 1000;    y1 = 700  # drone 1
+    x1 = 1990;    y1 = 700  # drone 1
     x2 = 10;    y2 = 10  # drone 2
     x3 = 800;    y3 = 10  # drone 3
     return x1, y1, x2, y2, x3, y3
@@ -120,14 +124,14 @@ def printLocation(x1, x2, x3, y1, y2, y3):
 # my Monitor Size (0,0) ~ (1919,1039)
 def drone_3(x3, y3):
     y3 += 2
-    if y3 > 1039-240:
+    if y3 > 1039:
         x3 = 800;        y3 = 10
     return x3, y3
 
 
 def drone_2(x2, y2):
     x2 += 2;    y2 += 2
-    if x2 > 1919-425 :
+    if x2 > 2500 :
         x2 = 10;        y2 = 10
     if y2 > 1039-240:
         y2 = 1039-240
@@ -136,9 +140,9 @@ def drone_2(x2, y2):
 
 def drone_1(x1, y1):
     x1 -= 2;    y1 -= 2
-    if x1 < 10 :
-        x1 = 1919-425;        y1 = 1039-240
-    if y1 <10:
+    if x1 < -425 :
+        x1 = 1990;        y1 = 1039-240
+    if y1 < 10:
         y1 = 10
     return x1, y1
 

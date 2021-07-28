@@ -52,7 +52,7 @@ class Ui_Form(object):
         self.show_pushButton.setGeometry(QtCore.QRect(20, 30, 83, 23))
         self.show_pushButton.setObjectName("show_pushButton")
         self.label = QtWidgets.QLabel(Form)
-        self.label.setGeometry(QtCore.QRect(50, 360, 301, 16))
+        self.label.setGeometry(QtCore.QRect(50, 360, 350, 16))
         self.label.setObjectName("label")
 
         self.retranslateUi(Form)
@@ -79,7 +79,7 @@ class Ui_Form(object):
         self.exit_pushButton.setText(_translate("Form", "Exit Videos"))
         self.stop_pushButton.setText(_translate("Form", "Stop Videos"))
         self.show_pushButton.setText(_translate("Form", "Show Videos"))
-        self.label.setText(_translate("Form", "\"ESC\" 키 동영상 종료, \"space\"키 동영상 일시 정지"))
+        self.label.setText(_translate("Form", "\"ESC\" 키 동영상 종료, \"space\"키 동영상 일시 정지 / 재생"))
 
 
 if __name__ == "__main__":

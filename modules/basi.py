@@ -10,7 +10,6 @@ import UI3
 import UI4
 import example00
 
-
 # import multimedia2
 
 # ExampleUI = '../_uiFiles/example.ui'
@@ -21,12 +20,6 @@ import example00
 def moveSubClass():
     print("Move Sub UI")
     widget.setCurrentIndex(widget.currentIndex() + 1)
-
-
-def stopVideos():
-    print("Stop Videos")
-    # multimedia2.cv2.waitKey(0)
-    example00.cv2.waitKey(0)
 
 
 def addVideo():
@@ -45,20 +38,33 @@ def moveSSubClass():
 
 # main class
 class MainWindow(QDialog, UI.Ui_Form):
+    a = 0
+
     def __init__(self):
         # super(MainWindow, self).__init__()
         # loadUi(ExampleUI, self)
         QDialog.__init__(self, None)
         self.setupUi(self)
-
         self.show_pushButton.clicked.connect(self.showVideos)  # 동영상 재생
-        self.stop_pushButton.clicked.connect(stopVideos)  # 동영상 일시정지
+        self.stop_pushButton.clicked.connect(self.stopVideos)  # 동영상 일시정지
         self.exit_pushButton.clicked.connect(self.exitVideos)  # 동영상 종료
         self.addVideo_pushButton.clicked.connect(moveSSubClass)  # 1개 액티비티 뛰어 넘기
         self.move_pushButton.clicked.connect(moveSubClass)  # 다음 액티비티 이동
         self.open_pushButton_1.clicked.connect(self.fileOpen1)  # 동영상 선택
         self.open_pushButton_2.clicked.connect(self.fileOpen2)  # 동영상 선택
         self.open_pushButton_3.clicked.connect(self.fileOpen3)  # 동영상 선택
+
+    def stopVideos(self, state):
+        # multimedia2.cv2.waitKey(0)
+        self.a += 1
+        print(self.a)
+        # if self.a % 2 == 1:
+        #     print("Stop Videos")
+        #     example00.cv2.waitKey(0) & 0xff
+        # elif self.a % 2 == 0:
+        #     print("Replay Videos")
+        #     example00.cv2.waitKey(1) & 0xff
+        example00.cv2.waitKey(0) & 0xff
 
     def fileOpen1(self):
         filename1 = QtWidgets.QFileDialog.getOpenFileNames(self, 'Open Files For Drone_1')  # type == list
