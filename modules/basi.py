@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import sys
 
+import cv2
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import *
@@ -143,10 +144,21 @@ class subSubClass(QDialog, UI4.Ui_Form):
         # show UI the Drone Location
 
     def mouseMoveEvent(self, event):
-        txt = "Mouse 위치 ; x={0},y={1}, global={2},{3}".format(event.x(), event.y(), event.globalX(), event.globalY())
-        self.drone_1_label.setText(txt)
-        self.drone_2_label.setText(txt)
-        self.drone_3_label.setText(txt)
+        txtIn = "Inside Mouse 위치 ; x={0},y={1}".format(event.x(), event.y())
+        txtOut = "Outside Mouse 위치 ; global={0},{1}".format(event.globalX(), event.globalY())
+        self.drone_1_label.setText(txtIn)
+        self.drone_2_label.setText(txtOut)
+
+    def mouseButtonKind(self, buttons):
+        if buttons & Qt.LeftButton:
+            self.drone_3_label.setText("Mouse Click Left")
+        if buttons & Qt.MidButton:
+            self.drone_3_label.setText("Mouse Click Middle(Wheel)")
+        if buttons & Qt.RightButton:
+            self.drone_3_label.setText("Mouse Click Right")
+
+    def mousePressEvent(self, e):
+        self.mouseButtonKind(e.buttons())
 
 
 if __name__ == "__main__":

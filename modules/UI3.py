@@ -28,7 +28,7 @@ class Ui_Form(object):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
         self.back_pushButton.setText(_translate("Form", "Move Main UI"))
-        self.move_pushButton.setText(_translate("Form", "Move SubSub UI"))
+        self.move_pushButton.setText(_translate("Form", "Move Calibration UI"))
 
 
 if __name__ == "__main__":

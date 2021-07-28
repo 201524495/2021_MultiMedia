@@ -15,14 +15,16 @@ def WidthHeight(cap):
     return cap.get(cv2.CAP_PROP_FRAME_WIDTH), cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
 
 
-def Inside(xLocation, yLocation): #  calibration 했을 때 나온 결과가 숫자로 들어가야 한다.
+# calibration 했을 때 나온 결과가 숫자로 들어가야 한다.
+# 그것에 비례해 동영상의 크기를 조절해야 한다.
+def Inside(xLocation, yLocation):  # , xOrigin, yOrigin, xMax, yMax):  # (zero, zero) ~ (xMax, yMax)
     if (xLocation > -425 and yLocation > -240) and (xLocation < 1919 and yLocation < 1040):
         return True
 
 
 def run(res1, res2, res3):  # Videos path (type str)
     x1, y1, x2, y2, x3, y3 = initial()  # 지워질 내용
-    i_1 = 0; i_2 = 0; i_3 = 0
+    i_1 = i_2 = i_3 = 0
     result1 = SplitEnter(res1)  # split string with new line : Videos path (str to array)
     result2 = SplitEnter(res2)
     result3 = SplitEnter(res3)
