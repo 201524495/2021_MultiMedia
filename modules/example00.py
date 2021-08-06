@@ -42,7 +42,7 @@ def run(res1, res2, res3):  # Videos path (type str)
         x2, y2 = drone_2(x2, y2)  # 지워질 내용
         x3, y3 = drone_3(x3, y3)  # 지워질 내용
 
-        if Inside(x1, y1):
+        if Inside(x1, y1):  # drone_1의 위치
             if CheckVideoEnding(cap1):  # 동영상이 종료되면
                 i_1 += 1  # 번호를 1단계 올리고
                 i_1 %= len_res1  # 비디오 수 만큼 재생한다.
@@ -56,7 +56,7 @@ def run(res1, res2, res3):  # Videos path (type str)
                     cv2.setWindowProperty("video_1", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
                     cv2.imshow("video_1", frame1)
 
-        if Inside(x2, y2):
+        if Inside(x2, y2):  # drone_2의 위치
             if CheckVideoEnding(cap2):  # 동영상이 종료되면
                 i_2 += 1  # 번호를 1단계 올리고
                 i_2 %= len_res2  # 비디오 수 만큼 재생한다.
@@ -70,7 +70,7 @@ def run(res1, res2, res3):  # Videos path (type str)
                     cv2.setWindowProperty('video2', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
                     cv2.imshow('video2', frame2)
 
-        if Inside(x3, y3):
+        if Inside(x3, y3):  # drone_3의 위치
             if CheckVideoEnding(cap3):  # 동영상이 종료되면
                 i_3 += 1  # 번호를 1단계 올리고
                 i_3 %= len_res3  # 비디오 수 만큼 재생한다.
