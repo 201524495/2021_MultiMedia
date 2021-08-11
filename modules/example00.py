@@ -55,14 +55,14 @@ def run(res1, res2, res3):  # Videos path (type str)
             i_1 += 1  # 번호를 1단계 올리고
             i_1 %= len_res1  # 비디오 수 만큼 재생한다.
             cap1 = cv2.VideoCapture(result1[i_1])  # 새로운 path로 적용한다.
-        if cap1.grab():  #
-            flg1, frame1 = cap1.retrieve()  # 영상을 한 frame씩 읽어오기
-            if flg1:
-                cv2.moveWindow("video_1", x1, y1)  # Location of Drone
-                cv2.namedWindow("video_1", cv2.WINDOW_NORMAL)  # custom size or full size
-                cv2.resizeWindow("video_1", int(width / 3), int(height / 3))  # size
-                cv2.setWindowProperty("video_1", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
-                if Inside(x1, y1):  # drone_1의 위치
+        if Inside(x1, y1):  # drone_1의 위치
+            if cap1.grab():  #
+                flg1, frame1 = cap1.retrieve()  # 영상을 한 frame씩 읽어오기
+                if flg1:
+                    cv2.moveWindow("video_1", x1, y1)  # Location of Drone
+                    cv2.namedWindow("video_1", cv2.WINDOW_NORMAL)  # custom size or full size
+                    cv2.resizeWindow("video_1", int(width / 3), int(height / 3))  # size
+                    cv2.setWindowProperty("video_1", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
                     cv2.imshow("video_1", frame1)
 
 
@@ -71,14 +71,14 @@ def run(res1, res2, res3):  # Videos path (type str)
             i_2 += 1  # 번호를 1단계 올리고
             i_2 %= len_res2  # 비디오 수 만큼 재생한다.
             cap2 = cv2.VideoCapture(result2[i_2])  # 적용한다.
-        if cap2.grab():  #
-            flg2, frame2 = cap2.retrieve()  # 영상을 한 frame씩 읽어오기
-            if flg2:
-                cv2.moveWindow('video2', x2, y2)  # Location of Drone
-                cv2.namedWindow('video2', cv2.WINDOW_NORMAL)  # custom size or full size
-                cv2.resizeWindow("video2", int(width / 3), int(height / 3))  # size
-                cv2.setWindowProperty('video2', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
-                if Inside(x2, y2):  # drone_2의 위치
+        if Inside(x2, y2):  # drone_2의 위치
+            if cap2.grab():  #
+                flg2, frame2 = cap2.retrieve()  # 영상을 한 frame씩 읽어오기
+                if flg2:
+                    cv2.moveWindow('video2', x2, y2)  # Location of Drone
+                    cv2.namedWindow('video2', cv2.WINDOW_NORMAL)  # custom size or full size
+                    cv2.resizeWindow("video2", int(width / 3), int(height / 3))  # size
+                    cv2.setWindowProperty('video2', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
                     cv2.imshow('video2', frame2)
 
 
@@ -87,14 +87,14 @@ def run(res1, res2, res3):  # Videos path (type str)
             i_3 += 1  # 번호를 1단계 올리고
             i_3 %= len_res3  # 비디오 수 만큼 재생한다.
             cap3 = cv2.VideoCapture(result3[i_3])  # 새로운 path로 적용한다.
-        if cap3.grab():  #
-            flg3, frame3 = cap3.retrieve()  # 영상을 한 frame씩 읽어오기
-            if flg3:
-                cv2.moveWindow('video3', x3, y3)  # Location of Drone
-                cv2.namedWindow('video3', cv2.WINDOW_NORMAL)  # custom size or full size
-                cv2.resizeWindow("video3", int(width / 3), int(height / 3))  # size
-                cv2.setWindowProperty('video3', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
-                if Inside(x3, y3):  # drone_3의 위치
+        if Inside(x3, y3):  # drone_3의 위치
+            if cap3.grab():  #
+                flg3, frame3 = cap3.retrieve()  # 영상을 한 frame씩 읽어오기
+                if flg3:
+                    cv2.moveWindow('video3', x3, y3)  # Location of Drone
+                    cv2.namedWindow('video3', cv2.WINDOW_NORMAL)  # custom size or full size
+                    cv2.resizeWindow("video3", int(width / 3), int(height / 3))  # size
+                    cv2.setWindowProperty('video3', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
                     cv2.imshow('video3', frame3)
 
         stopVideos()  #
