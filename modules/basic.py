@@ -151,7 +151,7 @@ class MainWindow(QDialog):
         if button == self.open_pushButton_21:
             filename21 = QtWidgets.QFileDialog.getOpenFileNames(self, 'Open Files For Drone_1')  # type == list
             filename_21 = '\n'.join(filename21[0])  # type == string
-            self.plainTextEdit_01.appendPlainText(filename_21)
+            self.plainTextEdit_21.appendPlainText(filename_21)
             print(filename_21)
         if button == self.open_pushButton_22:
             filename22 = QtWidgets.QFileDialog.getOpenFileNames(self, 'Open Files For Drone_2')
@@ -213,9 +213,10 @@ class MainWindow(QDialog):
             try:
                 result_1, result_2, result_3 = self.plainTextEdit_21.toPlainText(), self.plainTextEdit_22.toPlainText(), self.plainTextEdit_23.toPlainText()
                 print(result_1 + "\n" + result_2 + "\n" + result_3)
-                t = Process(target=PlayVideo, args=(result_1, result_2, result_3))
-                t.start()
-                t.join()
+                # t = Process(target=PlayVideo, args=(result_1, result_2, result_3))
+                # t.start()
+                # t.join()
+                PlayVideo(result_1, result_2, result_3)
             except Exception as e:
                 print(e)
 
