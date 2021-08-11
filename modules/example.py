@@ -15,6 +15,46 @@ def WidthHeight(cap):
     return cap.get(cv2.CAP_PROP_FRAME_WIDTH), cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
 
 
+def run1(res1):  # Videos path (type str)
+    x1, y1 = 1990, 700
+    i_1 = 0
+    result1 = SplitEnter(res1)  # split string with new line : Videos path (str to array)
+    len_res1 = Length(result1)  # length of each array : Number of Videos  (type is int)
+    cap1 = cv2.VideoCapture(result1[i_1])  #
+    width, height = WidthHeight(cap1)
+    print(width, height)  # 1280 720
+
+    while True:
+        x1, y1 = drone_1(x1, y1)  # 지워질 내용
+        if CheckVideoEnding(cap1):  # 동영상이 종료되면
+            i_1 += 1  # 번호를 1단계 올리고
+            i_1 %= len_res1  # 비디오 수 만큼 재생한다.
+            cap1 = cv2.VideoCapture(result1[i_1])  # 새로운 path로 적용한다.
+        # 만약 버튼이 눌러지면 Stop / Restart 를 반복해서 실행
+        if cap1.grab():  #
+            flg1, frame1 = cap1.retrieve()  # 영상을 한 frame씩 읽어오기
+            if flg1:
+                cv2.moveWindow("video_1", x1, y1)  # Location of Drone
+                cv2.namedWindow("video_1", cv2.WINDOW_NORMAL)  # custom size or full size
+                cv2.resizeWindow("video_1", int(width / 3), int(height / 3))  # size
+                cv2.setWindowProperty("video_1", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+                # 멈춤 버튼 클릭 시
+                # cv2.imshow("video_1",
+                # 재생 버튼 클릭 시
+                cv2.imshow("video_1", frame1)
+
+        stopVideos()  #
+
+        if cv2.waitKey(10) & 0xFF == 27:  # q 보다는 ESC가 더 직관적이고 깔끔하게 잘라짐
+            # keystroke latency (10ms)
+            # click the UI & press 'ESC' key
+            print("press the ESC")
+            break
+
+    cap1.release()
+    cv2.destroyAllWindows()
+
+
 def run2(res2):
     x2, y2 = 10, 10
     i_2 = 0
@@ -78,46 +118,6 @@ def run3(res3):
             break
 
     cap3.release()
-    cv2.destroyAllWindows()
-
-
-def run1(res1):  # Videos path (type str)
-    x1, y1 = 1990, 700
-    i_1 = 0
-    result1 = SplitEnter(res1)  # split string with new line : Videos path (str to array)
-    len_res1 = Length(result1)  # length of each array : Number of Videos  (type is int)
-    cap1 = cv2.VideoCapture(result1[i_1])  #
-    width, height = WidthHeight(cap1)
-    print(width, height)  # 1280 720
-
-    while True:
-        x1, y1 = drone_1(x1, y1)  # 지워질 내용
-        if CheckVideoEnding(cap1):  # 동영상이 종료되면
-            i_1 += 1  # 번호를 1단계 올리고
-            i_1 %= len_res1  # 비디오 수 만큼 재생한다.
-            cap1 = cv2.VideoCapture(result1[i_1])  # 새로운 path로 적용한다.
-        # 만약 버튼이 눌러지면 Stop / Restart 를 반복해서 실행
-        if cap1.grab():  #
-            flg1, frame1 = cap1.retrieve()  # 영상을 한 frame씩 읽어오기
-            if flg1:
-                cv2.moveWindow("video_1", x1, y1)  # Location of Drone
-                cv2.namedWindow("video_1", cv2.WINDOW_NORMAL)  # custom size or full size
-                cv2.resizeWindow("video_1", int(width / 3), int(height / 3))  # size
-                cv2.setWindowProperty("video_1", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
-                # 멈춤 버튼 클릭 시
-                # cv2.imshow("video_1",
-                # 재생 버튼 클릭 시
-                cv2.imshow("video_1", frame1)
-
-        stopVideos()  #
-
-        if cv2.waitKey(10) & 0xFF == 27:  # q 보다는 ESC가 더 직관적이고 깔끔하게 잘라짐
-            # keystroke latency (10ms)
-            # click the UI & press 'ESC' key
-            print("press the ESC")
-            break
-
-    cap1.release()
     cv2.destroyAllWindows()
 
 
