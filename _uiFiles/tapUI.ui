@@ -35,7 +35,7 @@
     </size>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>0</number>
    </property>
    <property name="documentMode">
     <bool>false</bool>
@@ -44,26 +44,13 @@
     <attribute name="title">
      <string>Chapter_1</string>
     </attribute>
-    <widget class="QPushButton" name="stop_pushButton_03">
-     <property name="geometry">
-      <rect>
-       <x>550</x>
-       <y>270</y>
-       <width>81</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Stop/Restart</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="open_pushButton_02">
      <property name="geometry">
       <rect>
        <x>550</x>
        <y>140</y>
-       <width>75</width>
-       <height>23</height>
+       <width>81</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="text">
@@ -75,8 +62,8 @@
       <rect>
        <x>550</x>
        <y>50</y>
-       <width>75</width>
-       <height>23</height>
+       <width>81</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="text">
@@ -98,8 +85,8 @@
       <rect>
        <x>550</x>
        <y>230</y>
-       <width>75</width>
-       <height>23</height>
+       <width>81</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="text">
@@ -126,52 +113,26 @@
       </rect>
      </property>
     </widget>
-    <widget class="QPushButton" name="stop_pushButton_01">
-     <property name="geometry">
-      <rect>
-       <x>550</x>
-       <y>90</y>
-       <width>81</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Stop/Restart</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="stop_pushButton_02">
-     <property name="geometry">
-      <rect>
-       <x>550</x>
-       <y>180</y>
-       <width>81</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Stop/Restart</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="exit_pushButton_00">
      <property name="geometry">
       <rect>
        <x>400</x>
        <y>10</y>
-       <width>75</width>
-       <height>23</height>
+       <width>91</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="text">
-      <string>Exit Videos</string>
+      <string>Exit</string>
      </property>
     </widget>
     <widget class="QPushButton" name="calibration_pushButton_00">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>180</x>
        <y>10</y>
-       <width>131</width>
-       <height>23</height>
+       <width>151</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="text">
@@ -183,25 +144,51 @@
       <rect>
        <x>10</x>
        <y>10</y>
-       <width>83</width>
-       <height>23</height>
+       <width>111</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="text">
       <string>Show Videos</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="move_pushButton_00">
+    <widget class="QCheckBox" name="checkBox_01">
      <property name="geometry">
       <rect>
-       <x>280</x>
-       <y>10</y>
-       <width>80</width>
-       <height>23</height>
+       <x>550</x>
+       <y>90</y>
+       <width>81</width>
+       <height>21</height>
       </rect>
      </property>
      <property name="text">
-      <string>Move Sub UI</string>
+      <string>500*300</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_02">
+     <property name="geometry">
+      <rect>
+       <x>550</x>
+       <y>180</y>
+       <width>81</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>500*300</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_03">
+     <property name="geometry">
+      <rect>
+       <x>550</x>
+       <y>270</y>
+       <width>81</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>500*300</string>
      </property>
     </widget>
    </widget>
@@ -214,25 +201,12 @@
       <rect>
        <x>550</x>
        <y>140</y>
-       <width>75</width>
-       <height>23</height>
+       <width>81</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="text">
       <string>Open File</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="stop_pushButton_13">
-     <property name="geometry">
-      <rect>
-       <x>550</x>
-       <y>270</y>
-       <width>81</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Stop/Restart</string>
      </property>
     </widget>
     <widget class="QPushButton" name="open_pushButton_11">
@@ -240,8 +214,8 @@
       <rect>
        <x>550</x>
        <y>50</y>
-       <width>75</width>
-       <height>23</height>
+       <width>81</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="text">
@@ -263,8 +237,8 @@
       <rect>
        <x>550</x>
        <y>230</y>
-       <width>75</width>
-       <height>23</height>
+       <width>81</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="text">
@@ -291,56 +265,56 @@
       </rect>
      </property>
     </widget>
-    <widget class="QPushButton" name="stop_pushButton_11">
-     <property name="geometry">
-      <rect>
-       <x>550</x>
-       <y>90</y>
-       <width>81</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Stop/Restart</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="stop_pushButton_12">
-     <property name="geometry">
-      <rect>
-       <x>550</x>
-       <y>180</y>
-       <width>81</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Stop/Restart</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="calibration_pushButton_10">
-     <property name="geometry">
-      <rect>
-       <x>120</x>
-       <y>10</y>
-       <width>131</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Calibration Button</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="show_pushButton_10">
      <property name="geometry">
       <rect>
        <x>10</x>
        <y>10</y>
-       <width>83</width>
-       <height>23</height>
+       <width>111</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="text">
       <string>Show Videos</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_11">
+     <property name="geometry">
+      <rect>
+       <x>550</x>
+       <y>90</y>
+       <width>81</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>500*300</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_12">
+     <property name="geometry">
+      <rect>
+       <x>550</x>
+       <y>180</y>
+       <width>81</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>500*300</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_13">
+     <property name="geometry">
+      <rect>
+       <x>550</x>
+       <y>270</y>
+       <width>81</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>500*300</string>
      </property>
     </widget>
     <widget class="QPushButton" name="exit_pushButton_10">
@@ -348,25 +322,12 @@
       <rect>
        <x>400</x>
        <y>10</y>
-       <width>75</width>
-       <height>23</height>
+       <width>91</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="text">
-      <string>Exit Videos</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="move_pushButton_10">
-     <property name="geometry">
-      <rect>
-       <x>280</x>
-       <y>10</y>
-       <width>80</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Move Sub UI</string>
+      <string>Exit</string>
      </property>
     </widget>
    </widget>
@@ -379,25 +340,12 @@
       <rect>
        <x>550</x>
        <y>140</y>
-       <width>75</width>
-       <height>23</height>
+       <width>81</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="text">
       <string>Open File</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="stop_pushButton_23">
-     <property name="geometry">
-      <rect>
-       <x>550</x>
-       <y>270</y>
-       <width>81</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Stop/Restart</string>
      </property>
     </widget>
     <widget class="QPushButton" name="open_pushButton_21">
@@ -405,8 +353,8 @@
       <rect>
        <x>550</x>
        <y>50</y>
-       <width>75</width>
-       <height>23</height>
+       <width>81</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="text">
@@ -428,8 +376,8 @@
       <rect>
        <x>550</x>
        <y>230</y>
-       <width>75</width>
-       <height>23</height>
+       <width>81</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="text">
@@ -456,56 +404,56 @@
       </rect>
      </property>
     </widget>
-    <widget class="QPushButton" name="stop_pushButton_21">
-     <property name="geometry">
-      <rect>
-       <x>550</x>
-       <y>90</y>
-       <width>81</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Stop/Restart</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="stop_pushButton_22">
-     <property name="geometry">
-      <rect>
-       <x>550</x>
-       <y>180</y>
-       <width>81</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Stop/Restart</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="calibration_pushButton_20">
-     <property name="geometry">
-      <rect>
-       <x>120</x>
-       <y>10</y>
-       <width>131</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Calibration Button</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="show_pushButton_20">
      <property name="geometry">
       <rect>
        <x>10</x>
        <y>10</y>
-       <width>83</width>
-       <height>23</height>
+       <width>111</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="text">
       <string>Show Videos</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_21">
+     <property name="geometry">
+      <rect>
+       <x>550</x>
+       <y>90</y>
+       <width>81</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>500*300</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_22">
+     <property name="geometry">
+      <rect>
+       <x>550</x>
+       <y>180</y>
+       <width>81</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>500*300</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_23">
+     <property name="geometry">
+      <rect>
+       <x>550</x>
+       <y>270</y>
+       <width>81</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>500*300</string>
      </property>
     </widget>
     <widget class="QPushButton" name="exit_pushButton_20">
@@ -513,25 +461,151 @@
       <rect>
        <x>400</x>
        <y>10</y>
-       <width>75</width>
-       <height>23</height>
+       <width>91</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="text">
-      <string>Exit Videos</string>
+      <string>Exit</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="move_pushButton_20">
+   </widget>
+   <widget class="QWidget" name="tab">
+    <attribute name="title">
+     <string>Chapter_4</string>
+    </attribute>
+    <widget class="QCheckBox" name="checkBox_32">
      <property name="geometry">
       <rect>
-       <x>280</x>
-       <y>10</y>
-       <width>80</width>
-       <height>23</height>
+       <x>550</x>
+       <y>180</y>
+       <width>81</width>
+       <height>21</height>
       </rect>
      </property>
      <property name="text">
-      <string>Move Sub UI</string>
+      <string>500*300</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="open_pushButton_32">
+     <property name="geometry">
+      <rect>
+       <x>550</x>
+       <y>140</y>
+       <width>81</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Open File</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_33">
+     <property name="geometry">
+      <rect>
+       <x>550</x>
+       <y>270</y>
+       <width>81</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>500*300</string>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="plainTextEdit_31">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>521</width>
+       <height>81</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_31">
+     <property name="geometry">
+      <rect>
+       <x>550</x>
+       <y>90</y>
+       <width>81</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>500*300</string>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="plainTextEdit_32">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>140</y>
+       <width>521</width>
+       <height>81</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="show_pushButton_30">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Show Videos</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="open_pushButton_33">
+     <property name="geometry">
+      <rect>
+       <x>550</x>
+       <y>230</y>
+       <width>81</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Open File</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="open_pushButton_31">
+     <property name="geometry">
+      <rect>
+       <x>550</x>
+       <y>50</y>
+       <width>81</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Open File</string>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="plainTextEdit_33">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>230</y>
+       <width>521</width>
+       <height>91</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="exit_pushButton_30">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>10</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Exit</string>
      </property>
     </widget>
    </widget>
@@ -546,7 +620,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>&quot;ESC&quot; 키 동영상 종료, &quot;space&quot;키 동영상 일시 정지</string>
+    <string>&quot;Q(q)&quot; 키 동영상 종료, &quot;space&quot;키 동영상 일시 정지</string>
    </property>
   </widget>
  </widget>

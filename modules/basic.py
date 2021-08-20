@@ -1,22 +1,20 @@
 # -*- coding: utf-8 -*-
 import sys
-import threading
-from multiprocessing import Process
 
 from PyQt5 import QtWidgets
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QCoreApplication
 from PyQt5.QtWidgets import *
 from PyQt5.uic import loadUi
 
 import example
-from modules import example00
+import example00
+import tapUI
+import UI4
 
-ExampleUI = '../_uiFiles/example.ui'
 ExampleTabUI = '../_uiFiles/tapUI.ui'
-Example3UI = '../_uiFiles/example3.ui'
 Example4UI = '../_uiFiles/example4.ui'
 
-playing = ["Run", "Stop"]
+playing = ["300*500", "500*300"]
 global a, b, c
 
 
@@ -35,85 +33,129 @@ def moveSSubClass():
 
 
 # main class
-class MainWindow(QDialog):
-    a_01 = b_01 = c_01 = a_02 = b_02 = c_02 = a_03 = b_03 = c_03 = 0
+class MainWindow(QDialog):  # , tapUI.Ui_Form):
+    # 챕터 1(_0x), 2(_1x), 3(_2x), 4(_3x) , 드론 1(_x1) , 2(_x2) , 3(_x3)
+    _01 = _02 = _03 = _11 = _12 = _13 = _21 = _22 = _23 = _31 = _32 = _33 = 0
 
     def __init__(self):
         super(MainWindow, self).__init__()
         loadUi(ExampleTabUI, self)
 
-        self.exit_pushButton_00.clicked.connect(lambda state, button=self.exit_pushButton_00: self.exitVideos(state, button))  # 동영상 종료
-        self.exit_pushButton_10.clicked.connect(lambda state, button=self.exit_pushButton_10: self.exitVideos(state, button))  # 동영상 종료
-        self.exit_pushButton_20.clicked.connect(lambda state, button=self.exit_pushButton_20: self.exitVideos(state, button))  # 동영상 종료
+        # QDialog.__init__(self, None)
+        # self.setupUi(self)
+
         self.calibration_pushButton_00.clicked.connect(moveSSubClass)  # calibration
 
-        self.show_pushButton_00.clicked.connect(lambda state, button=self.show_pushButton_00: self.showVideos(state, button))  # chapter_1 동영상 재생
-        self.show_pushButton_10.clicked.connect(lambda state, button=self.show_pushButton_10: self.showVideos(state, button))  # chapter_2 동영상 재생
-        self.show_pushButton_20.clicked.connect(lambda state, button=self.show_pushButton_20: self.showVideos(state, button))  # chapter_3 동영상 재생
+        self.exit_pushButton_00.clicked.connect(
+            lambda state, button=self.exit_pushButton_00: self.exitVideos(state, button))  # 동영상 종료
+        self.exit_pushButton_10.clicked.connect(
+            lambda state, button=self.exit_pushButton_10: self.exitVideos(state, button))  # 동영상 종료
+        self.exit_pushButton_20.clicked.connect(
+            lambda state, button=self.exit_pushButton_20: self.exitVideos(state, button))  # 동영상 종료
+        self.exit_pushButton_30.clicked.connect(
+            lambda state, button=self.exit_pushButton_30: self.exitVideos(state, button))  # 동영상 종료
 
-        self.open_pushButton_01.clicked.connect(lambda state, button=self.open_pushButton_01: self.fileOpen1(state, button))  # chapter_1 동영상1 선택
-        self.open_pushButton_02.clicked.connect(lambda state, button=self.open_pushButton_02: self.fileOpen1(state, button))  # chapter_1 동영상2 선택
-        self.open_pushButton_03.clicked.connect(lambda state, button=self.open_pushButton_03: self.fileOpen1(state, button))  # chapter_1 동영상3 선택
-        self.open_pushButton_11.clicked.connect(lambda state, button=self.open_pushButton_11: self.fileOpen2(state, button))  # chapter_2 동영상1 선택
-        self.open_pushButton_12.clicked.connect(lambda state, button=self.open_pushButton_12: self.fileOpen2(state, button))  # chapter_2 동영상2 선택
-        self.open_pushButton_13.clicked.connect(lambda state, button=self.open_pushButton_13: self.fileOpen2(state, button))  # chapter_2 동영상3 선택
-        self.open_pushButton_21.clicked.connect(lambda state, button=self.open_pushButton_21: self.fileOpen3(state, button))  # chapter_3 동영상1 선택
-        self.open_pushButton_22.clicked.connect(lambda state, button=self.open_pushButton_22: self.fileOpen3(state, button))  # chapter_3 동영상2 선택
-        self.open_pushButton_23.clicked.connect(lambda state, button=self.open_pushButton_23: self.fileOpen3(state, button))  # chapter_3 동영상3 선택
+        self.show_pushButton_00.clicked.connect(
+            lambda state, button=self.show_pushButton_00: self.showVideos(state, button))  # chapter_1 동영상 재생
+        self.show_pushButton_10.clicked.connect(
+            lambda state, button=self.show_pushButton_10: self.showVideos(state, button))  # chapter_2 동영상 재생
+        self.show_pushButton_20.clicked.connect(
+            lambda state, button=self.show_pushButton_20: self.showVideos(state, button))  # chapter_3 동영상 재생
+        self.show_pushButton_30.clicked.connect(
+            lambda state, button=self.show_pushButton_30: self.showVideos(state, button))  # chapter_4 동영상 재생
 
-        self.stop_pushButton_01.clicked.connect(lambda state, button=self.stop_pushButton_01: self.stopVideos1(state, button))  # chapter_1 동영상1 일시정지
-        self.stop_pushButton_02.clicked.connect(lambda state, button=self.stop_pushButton_02: self.stopVideos2(state, button))  # chapter_1 동영상2 일시정지
-        self.stop_pushButton_03.clicked.connect(lambda state, button=self.stop_pushButton_03: self.stopVideos3(state, button))  # chapter_1 동영상3 일시정지
-        self.stop_pushButton_11.clicked.connect(lambda state, button=self.stop_pushButton_11: self.stopVideos1(state, button))  # chapter_2 동영상1 일시정지
-        self.stop_pushButton_12.clicked.connect(lambda state, button=self.stop_pushButton_12: self.stopVideos2(state, button))  # chapter_2 동영상2 일시정지
-        self.stop_pushButton_13.clicked.connect(lambda state, button=self.stop_pushButton_13: self.stopVideos3(state, button))  # chapter_2 동영상3 일시정지
-        self.stop_pushButton_21.clicked.connect(lambda state, button=self.stop_pushButton_21: self.stopVideos1(state, button))  # chapter_3 동영상1 일시정지
-        self.stop_pushButton_22.clicked.connect(lambda state, button=self.stop_pushButton_22: self.stopVideos2(state, button))  # chapter_3 동영상2 일시정지
-        self.stop_pushButton_23.clicked.connect(lambda state, button=self.stop_pushButton_23: self.stopVideos3(state, button))  # chapter_3 동영상3 일시정지
+        self.open_pushButton_01.clicked.connect(
+            lambda state, button=self.open_pushButton_01: self.fileOpen(state, button))  # chapter_1 동영상1 선택
+        self.open_pushButton_02.clicked.connect(
+            lambda state, button=self.open_pushButton_02: self.fileOpen(state, button))  # chapter_1 동영상2 선택
+        self.open_pushButton_03.clicked.connect(
+            lambda state, button=self.open_pushButton_03: self.fileOpen(state, button))  # chapter_1 동영상3 선택
+        self.open_pushButton_11.clicked.connect(
+            lambda state, button=self.open_pushButton_11: self.fileOpen(state, button))  # chapter_2 동영상1 선택
+        self.open_pushButton_12.clicked.connect(
+            lambda state, button=self.open_pushButton_12: self.fileOpen(state, button))  # chapter_2 동영상2 선택
+        self.open_pushButton_13.clicked.connect(
+            lambda state, button=self.open_pushButton_13: self.fileOpen(state, button))  # chapter_2 동영상3 선택
+        self.open_pushButton_21.clicked.connect(
+            lambda state, button=self.open_pushButton_21: self.fileOpen(state, button))  # chapter_3 동영상1 선택
+        self.open_pushButton_22.clicked.connect(
+            lambda state, button=self.open_pushButton_22: self.fileOpen(state, button))  # chapter_3 동영상2 선택
+        self.open_pushButton_23.clicked.connect(
+            lambda state, button=self.open_pushButton_23: self.fileOpen(state, button))  # chapter_3 동영상3 선택
+        self.open_pushButton_31.clicked.connect(
+            lambda state, button=self.open_pushButton_31: self.fileOpen(state, button))  # chapter_3 동영상1 선택
+        self.open_pushButton_32.clicked.connect(
+            lambda state, button=self.open_pushButton_32: self.fileOpen(state, button))  # chapter_3 동영상2 선택
+        self.open_pushButton_33.clicked.connect(
+            lambda state, button=self.open_pushButton_33: self.fileOpen(state, button))  # chapter_3 동영상3 선택
 
-    def stopVideos1(self, state, button):
-        if button == self.stop_pushButton_01:  # chapter_1 drone_1
-            self.a_01 = (self.a_01 + 1) % 2
-            print("drone1_1 = " + playing[self.a_01])
-            return self.a_01
-        if button == self.stop_pushButton_11:  # chapter_2 drone_1
-            self.a_02 = (self.a_02 + 1) % 2
-            print("drone2_1 = " + playing[self.a_02])
-            return self.a_02
-        if button == self.stop_pushButton_21:  # chapter_3 drone_1
-            self.a_03 = (self.a_03 + 1) % 2
-            print("drone3_1 = " + playing[self.a_03])
-            return self.a_03
+        self.checkBox_01.clicked.connect(
+            lambda state, button=self.checkBox_01: self.changeFrame(state, button))  # chapter_1 동영상1 일시정지
+        self.checkBox_02.clicked.connect(
+            lambda state, button=self.checkBox_02: self.changeFrame(state, button))  # chapter_1 동영상2 일시정지
+        self.checkBox_03.clicked.connect(
+            lambda state, button=self.checkBox_03: self.changeFrame(state, button))  # chapter_1 동영상3 일시정지
+        self.checkBox_11.clicked.connect(
+            lambda state, button=self.checkBox_11: self.changeFrame(state, button))  # chapter_2 동영상1 일시정지
+        self.checkBox_12.clicked.connect(
+            lambda state, button=self.checkBox_12: self.changeFrame(state, button))  # chapter_2 동영상2 일시정지
+        self.checkBox_13.clicked.connect(
+            lambda state, button=self.checkBox_13: self.changeFrame(state, button))  # chapter_2 동영상3 일시정지
+        self.checkBox_21.clicked.connect(
+            lambda state, button=self.checkBox_21: self.changeFrame(state, button))  # chapter_3 동영상1 일시정지
+        self.checkBox_22.clicked.connect(
+            lambda state, button=self.checkBox_22: self.changeFrame(state, button))  # chapter_3 동영상2 일시정지
+        self.checkBox_23.clicked.connect(
+            lambda state, button=self.checkBox_23: self.changeFrame(state, button))  # chapter_3 동영상3 일시정지
+        self.checkBox_31.clicked.connect(
+            lambda state, button=self.checkBox_31: self.changeFrame(state, button))  # chapter_3 동영상1 일시정지
+        self.checkBox_32.clicked.connect(
+            lambda state, button=self.checkBox_32: self.changeFrame(state, button))  # chapter_3 동영상2 일시정지
+        self.checkBox_33.clicked.connect(
+            lambda state, button=self.checkBox_33: self.changeFrame(state, button))  # chapter_3 동영상3 일시정지
 
-    def stopVideos2(self, state, button):
-        if button == self.stop_pushButton_02:  # chapter_1 drone_2
-            self.b_01 = (self.b_01 + 1) % 2
-            print("drone1_2 = " + playing[self.b_01])
-            return self.b_01
-        if button == self.stop_pushButton_12:  # chapter_2 drone_2
-            self.b_02 = (self.b_02 + 1) % 2
-            print("drone2_2 = " + playing[self.b_02])
-            return self.b_02
-        if button == self.stop_pushButton_22:  # chapter_3 drone_2
-            self.b_03 = (self.b_03 + 1) % 2
-            print("drone3_2 = " + playing[self.b_03])
-            return self.b_03
+    def changeFrame(self, state, button):
+        if button == self.checkBox_01:  # chapter_1 drone_1
+            self._01 = (self._01 + 1) % 2
+            print("drone1_1 = " + playing[self._01])
+        if button == self.checkBox_02:  # chapter_1 drone_2
+            self._02 = (self._02 + 1) % 2
+            print("drone1_2 = " + playing[self._02])
+        if button == self.checkBox_03:  # chapter_1 drone_3
+            self._03 = (self._03 + 1) % 2
+            print("drone1_3 = " + playing[self._03])
 
-    def stopVideos3(self, state, button):
-        if button == self.stop_pushButton_03:  # chapter_1 drone_3
-            self.c_01 = (self.c_01 + 1) % 2
-            print("drone1_3 = " + playing[self.c_01])
-            return self.c_01
-        if button == self.stop_pushButton_13:  # chapter_2 drone_3
-            self.c_02 = (self.c_02 + 1) % 2
-            print("drone2_3 = " + playing[self.c_02])
-            return self.c_02
-        if button == self.stop_pushButton_23:  # chapter_3 drone_3
-            self.c_03 = (self.c_03 + 1) % 2
-            print("drone3_3 = " + playing[self.c_03])
-            return self.c_03
+        if button == self.checkBox_11:  # chapter_2 drone_1
+            self._11 = (self._11 + 1) % 2
+            print("drone2_1 = " + playing[self._11])
+        if button == self.checkBox_12:  # chapter_2 drone_2
+            self._12 = (self._12 + 1) % 2
+            print("drone2_2 = " + playing[self._12])
+        if button == self.checkBox_13:  # chapter_2 drone_3
+            self._13 = (self._13 + 1) % 2
+            print("drone2_3 = " + playing[self._13])
 
-    def fileOpen1(self, state, button):  # chapter_1
+        if button == self.checkBox_21:  # chapter_3 drone_1
+            self._21 = (self._21 + 1) % 2
+            print("drone3_1 = " + playing[self._21])
+        if button == self.checkBox_22:  # chapter_3 drone_2
+            self._22 = (self._22 + 1) % 2
+            print("drone3_2 = " + playing[self._22])
+        if button == self.checkBox_23:  # chapter_3 drone_3
+            self._23 = (self._23 + 1) % 2
+            print("drone3_3 = " + playing[self._23])
+
+        if button == self.checkBox_31:  # chapter_4 drone_1
+            self._31 = (self._31 + 1) % 2
+            print("drone4_1 = " + playing[self._31])
+        if button == self.checkBox_32:  # chapter_4 drone_2
+            self._32 = (self._32 + 1) % 2
+            print("drone4_2 = " + playing[self._32])
+        if button == self.checkBox_33:  # chapter_4 drone_3
+            self._33 = (self._33 + 1) % 2
+            print("drone4_3 = " + playing[self._33])
+
+    def fileOpen(self, state, button):  # chapter_1
         if button == self.open_pushButton_01:
             filename01 = QtWidgets.QFileDialog.getOpenFileNames(self, 'Open Files For Drone_1')  # type == list
             filename_01 = '\n'.join(filename01[0])  # type == string
@@ -130,7 +172,6 @@ class MainWindow(QDialog):
             self.plainTextEdit_03.appendPlainText(filename_03)
             print(filename_03)
 
-    def fileOpen2(self, state, button):  # chapter_2
         if button == self.open_pushButton_11:
             filename11 = QtWidgets.QFileDialog.getOpenFileNames(self, 'Open Files For Drone_1')  # type == list
             filename_11 = '\n'.join(filename11[0])  # type == string
@@ -147,7 +188,6 @@ class MainWindow(QDialog):
             self.plainTextEdit_13.appendPlainText(filename_13)
             print(filename_13)
 
-    def fileOpen3(self, state, button):  # chapter_3
         if button == self.open_pushButton_21:
             filename21 = QtWidgets.QFileDialog.getOpenFileNames(self, 'Open Files For Drone_1')  # type == list
             filename_21 = '\n'.join(filename21[0])  # type == string
@@ -164,20 +204,38 @@ class MainWindow(QDialog):
             self.plainTextEdit_23.appendPlainText(filename_23)
             print(filename_23)
 
+        if button == self.open_pushButton_31:
+            filename31 = QtWidgets.QFileDialog.getOpenFileNames(self, 'Open Files For Drone_1')  # type == list
+            filename_31 = '\n'.join(filename31[0])  # type == string
+            self.plainTextEdit_31.appendPlainText(filename_31)
+            print(filename_31)
+        if button == self.open_pushButton_32:
+            filename32 = QtWidgets.QFileDialog.getOpenFileNames(self, 'Open Files For Drone_2')
+            filename_32 = '\n'.join(filename32[0])
+            self.plainTextEdit_32.appendPlainText(filename_32)
+            print(filename_32)
+        if button == self.open_pushButton_33:
+            filename33 = QtWidgets.QFileDialog.getOpenFileNames(self, 'Open Files For Drone_3')
+            filename_33 = '\n'.join(filename33[0])
+            self.plainTextEdit_33.appendPlainText(filename_33)
+            print(filename_33)
+
     def exitVideos(self, state, button):  # ???
         print("Exit Videos")
         if button == self.exit_pushButton_00:
-            result_1, result_2, result_3 = self.plainTextEdit_01.toPlainText(), self.plainTextEdit_02.toPlainText(), self.plainTextEdit_03.toPlainText()
-            print(result_1, result_2, result_3)
+            sys.exit(QCoreApplication.instance().quit)
+
         if button == self.exit_pushButton_10:
-            result_1, result_2, result_3 = self.plainTextEdit_11.toPlainText(), self.plainTextEdit_12.toPlainText(), self.plainTextEdit_13.toPlainText()
-            print(result_1, result_2, result_3)
+            sys.exit(QCoreApplication.instance().quit)
+
         if button == self.exit_pushButton_20:
-            result_1, result_2, result_3 = self.plainTextEdit_21.toPlainText(), self.plainTextEdit_22.toPlainText(), self.plainTextEdit_23.toPlainText()
-            print(result_1, result_2, result_3)
+            sys.exit(QCoreApplication.instance().quit)
+
+        if button == self.exit_pushButton_30:
+            sys.exit(QCoreApplication.instance().quit)
 
     def keyPressEvent(self, e):
-        if e.key() == Qt.Key_Escape:  # Main UI에서 ESC 클릭시 화면 날라가는 현상 발생
+        if e.key() == Qt.Key_Escape:  # Main UI 에서 ESC 클릭시 화면 날라가는 현상 발생
             print("ESC")
             pass  # pass 해둠으로써 그냥 넘어가게끔 만듦.
         elif e.key() == Qt.Key_F:
@@ -191,9 +249,7 @@ class MainWindow(QDialog):
             try:
                 result_1, result_2, result_3 = self.plainTextEdit_01.toPlainText(), self.plainTextEdit_02.toPlainText(), self.plainTextEdit_03.toPlainText()
                 print(result_1 + "\n" + result_2 + "\n" + result_3)
-                t = Process(target=PlayVideo, args=(result_1, result_2, result_3))
-                t.start()
-                t.join()
+                PlayVideo(result_1, result_2, result_3, self._01, self._02, self._03)
             except Exception as e:
                 print(e)
 
@@ -202,9 +258,7 @@ class MainWindow(QDialog):
             try:
                 result_1, result_2, result_3 = self.plainTextEdit_11.toPlainText(), self.plainTextEdit_12.toPlainText(), self.plainTextEdit_13.toPlainText()
                 print(result_1 + "\n" + result_2 + "\n" + result_3)
-                t = Process(target=PlayVideo, args=(result_1, result_2, result_3))
-                t.start()
-                t.join()
+                PlayVideo(result_1, result_2, result_3, self._11, self._12, self._13)
             except Exception as e:
                 print(e)
 
@@ -213,32 +267,37 @@ class MainWindow(QDialog):
             try:
                 result_1, result_2, result_3 = self.plainTextEdit_21.toPlainText(), self.plainTextEdit_22.toPlainText(), self.plainTextEdit_23.toPlainText()
                 print(result_1 + "\n" + result_2 + "\n" + result_3)
-                # t = Process(target=PlayVideo, args=(result_1, result_2, result_3))
-                # t.start()
-                # t.join()
-                PlayVideo(result_1, result_2, result_3)
+                PlayVideo(result_1, result_2, result_3, self._21, self._22, self._23)
+            except Exception as e:
+                print(e)
+
+        if button == self.show_pushButton_30:
+            print("Show Videos")
+            try:
+                result_1, result_2, result_3 = self.plainTextEdit_31.toPlainText(), self.plainTextEdit_32.toPlainText(), self.plainTextEdit_33.toPlainText()
+                print(result_1 + "\n" + result_2 + "\n" + result_3)
+                PlayVideo(result_1, result_2, result_3, self._31, self._32, self._33)
             except Exception as e:
                 print(e)
 
 
-def PlayVideo(video_1, video_2, video_3):
-    # example.run1(video_1)
-    # example.run2(video_2)
-    # example.run3(video_3)
-    example00.run(video_1, video_2, video_3)
+def PlayVideo(video_1, video_2, video_3, drone_1, drone_2, drone_3):
+    example00.run(video_1, video_2, video_3, drone_1, drone_2, drone_3)
 
 
 # sub sub class
-class subSubClass(QDialog):
+class subSubClass(QDialog):  # , UI4.Ui_Form):
     def __init__(self):
         QDialog.__init__(self, None)
         loadUi(Example4UI, self)
+        # self.setupUi(self)
+
         self.back_pushButton.clicked.connect(backButton)
         self.setMouseTracking(True)
         # show UI the Drone Location
 
     def keyPressEvent(self, e):
-        if e.key() == Qt.Key_Escape:  # Main UI에서 ESC 클릭시 화면 날라가는 현상 발생
+        if e.key() == Qt.Key_Escape:  # Main UI 에서 ESC 클릭시 화면 날라가는 현상 발생
             print("ESC")
             pass  # pass 해둠으로써 그냥 넘어가게끔 만듦.
         elif e.key() == Qt.Key_F:
