@@ -33,16 +33,16 @@ def moveSSubClass():
 
 
 # main class
-class MainWindow(QDialog):  # , tapUI.Ui_Form):
+class MainWindow(QDialog, tapUI.Ui_Form):
     # 챕터 1(_0x), 2(_1x), 3(_2x), 4(_3x) , 드론 1(_x1) , 2(_x2) , 3(_x3)
     _01 = _02 = _03 = _11 = _12 = _13 = _21 = _22 = _23 = _31 = _32 = _33 = 0
 
     def __init__(self):
         super(MainWindow, self).__init__()
-        loadUi(ExampleTabUI, self)
+        # loadUi(ExampleTabUI, self)
 
-        # QDialog.__init__(self, None)
-        # self.setupUi(self)
+        QDialog.__init__(self, None)
+        self.setupUi(self)
 
         self.calibration_pushButton_00.clicked.connect(moveSSubClass)  # calibration
 
@@ -90,31 +90,31 @@ class MainWindow(QDialog):  # , tapUI.Ui_Form):
             lambda state, button=self.open_pushButton_33: self.fileOpen(state, button))  # chapter_3 동영상3 선택
 
         self.checkBox_01.clicked.connect(
-            lambda state, button=self.checkBox_01: self.changeFrame(state, button))  # chapter_1 동영상1 일시정지
+            lambda state, button=self.checkBox_01: self.changeSize(state, button))  # chapter_1 동영상1 일시정지
         self.checkBox_02.clicked.connect(
-            lambda state, button=self.checkBox_02: self.changeFrame(state, button))  # chapter_1 동영상2 일시정지
+            lambda state, button=self.checkBox_02: self.changeSize(state, button))  # chapter_1 동영상2 일시정지
         self.checkBox_03.clicked.connect(
-            lambda state, button=self.checkBox_03: self.changeFrame(state, button))  # chapter_1 동영상3 일시정지
+            lambda state, button=self.checkBox_03: self.changeSize(state, button))  # chapter_1 동영상3 일시정지
         self.checkBox_11.clicked.connect(
-            lambda state, button=self.checkBox_11: self.changeFrame(state, button))  # chapter_2 동영상1 일시정지
+            lambda state, button=self.checkBox_11: self.changeSize(state, button))  # chapter_2 동영상1 일시정지
         self.checkBox_12.clicked.connect(
-            lambda state, button=self.checkBox_12: self.changeFrame(state, button))  # chapter_2 동영상2 일시정지
+            lambda state, button=self.checkBox_12: self.changeSize(state, button))  # chapter_2 동영상2 일시정지
         self.checkBox_13.clicked.connect(
-            lambda state, button=self.checkBox_13: self.changeFrame(state, button))  # chapter_2 동영상3 일시정지
+            lambda state, button=self.checkBox_13: self.changeSize(state, button))  # chapter_2 동영상3 일시정지
         self.checkBox_21.clicked.connect(
-            lambda state, button=self.checkBox_21: self.changeFrame(state, button))  # chapter_3 동영상1 일시정지
+            lambda state, button=self.checkBox_21: self.changeSize(state, button))  # chapter_3 동영상1 일시정지
         self.checkBox_22.clicked.connect(
-            lambda state, button=self.checkBox_22: self.changeFrame(state, button))  # chapter_3 동영상2 일시정지
+            lambda state, button=self.checkBox_22: self.changeSize(state, button))  # chapter_3 동영상2 일시정지
         self.checkBox_23.clicked.connect(
-            lambda state, button=self.checkBox_23: self.changeFrame(state, button))  # chapter_3 동영상3 일시정지
+            lambda state, button=self.checkBox_23: self.changeSize(state, button))  # chapter_3 동영상3 일시정지
         self.checkBox_31.clicked.connect(
-            lambda state, button=self.checkBox_31: self.changeFrame(state, button))  # chapter_3 동영상1 일시정지
+            lambda state, button=self.checkBox_31: self.changeSize(state, button))  # chapter_3 동영상1 일시정지
         self.checkBox_32.clicked.connect(
-            lambda state, button=self.checkBox_32: self.changeFrame(state, button))  # chapter_3 동영상2 일시정지
+            lambda state, button=self.checkBox_32: self.changeSize(state, button))  # chapter_3 동영상2 일시정지
         self.checkBox_33.clicked.connect(
-            lambda state, button=self.checkBox_33: self.changeFrame(state, button))  # chapter_3 동영상3 일시정지
+            lambda state, button=self.checkBox_33: self.changeSize(state, button))  # chapter_3 동영상3 일시정지
 
-    def changeFrame(self, state, button):
+    def changeSize(self, state, button):
         if button == self.checkBox_01:  # chapter_1 drone_1
             self._01 = (self._01 + 1) % 2
             print("drone1_1 = " + playing[self._01])
@@ -234,6 +234,17 @@ class MainWindow(QDialog):  # , tapUI.Ui_Form):
         if button == self.exit_pushButton_30:
             sys.exit(QCoreApplication.instance().quit)
 
+    def closeEvent(self, event):
+        print("event")
+        from PyQt5 import QtGui
+        reply = QtGui.QMessageBox.question(self, 'Message',
+                                           "Are you sure to quit?", QtGui.QMessageBox.Yes, QtGui.QMessageBox.No)
+
+        if reply == QtGui.QMessageBox.Yes:
+            event.accept()
+        else:
+            event.ignore()
+
     def keyPressEvent(self, e):
         if e.key() == Qt.Key_Escape:  # Main UI 에서 ESC 클릭시 화면 날라가는 현상 발생
             print("ESC")
@@ -244,6 +255,7 @@ class MainWindow(QDialog):  # , tapUI.Ui_Form):
             print("N")
 
     def showVideos(self, state, button):
+        result_1 = result_2 = result_3 = ""
         if button == self.show_pushButton_00:
             print("Show Videos")
             try:
@@ -286,11 +298,11 @@ def PlayVideo(video_1, video_2, video_3, drone_1, drone_2, drone_3):
 
 
 # sub sub class
-class subSubClass(QDialog):  # , UI4.Ui_Form):
+class subSubClass(QDialog, UI4.Ui_Form):
     def __init__(self):
         QDialog.__init__(self, None)
-        loadUi(Example4UI, self)
-        # self.setupUi(self)
+        # loadUi(Example4UI, self)
+        self.setupUi(self)
 
         self.back_pushButton.clicked.connect(backButton)
         self.setMouseTracking(True)
