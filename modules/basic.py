@@ -223,27 +223,27 @@ class MainWindow(QDialog, tapUI.Ui_Form):
     def exitVideos(self, state, button):  # ???
         print("Exit Videos")
         if button == self.exit_pushButton_00:
-            sys.exit(QCoreApplication.instance().quit)
+            self.closeEvents()
 
         if button == self.exit_pushButton_10:
-            sys.exit(QCoreApplication.instance().quit)
+            self.closeEvents()
 
         if button == self.exit_pushButton_20:
-            sys.exit(QCoreApplication.instance().quit)
+            self.closeEvents()
 
         if button == self.exit_pushButton_30:
-            sys.exit(QCoreApplication.instance().quit)
+            self.closeEvents()
 
-    def closeEvent(self, event):
+    def closeEvents(self):
         print("event")
-        from PyQt5 import QtGui
-        reply = QtGui.QMessageBox.question(self, 'Message',
-                                           "Are you sure to quit?", QtGui.QMessageBox.Yes, QtGui.QMessageBox.No)
+        reply = QMessageBox.question(self, 'Message',
+                                           "정말 종료 하시겠습니까?", QMessageBox.Yes, QMessageBox.No)
 
-        if reply == QtGui.QMessageBox.Yes:
-            event.accept()
+        if reply == QMessageBox.Yes:
+            sys.exit(QCoreApplication.instance().quit)
+            pass
         else:
-            event.ignore()
+            pass
 
     def keyPressEvent(self, e):
         if e.key() == Qt.Key_Escape:  # Main UI 에서 ESC 클릭시 화면 날라가는 현상 발생
