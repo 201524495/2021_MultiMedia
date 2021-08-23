@@ -46,6 +46,10 @@
  
  ![Keyboard Event](https://github.com/201524495/2021_MultiMedia/blob/main/image/keyboardEvent2.JPG)
  
+  More Sensitive Keyboard Press
+ 
+ ![Keyboard Event](https://github.com/201524495/2021_MultiMedia/blob/main/image/keyboardEvent3.JPG)
+ 
   Control UI
  
  ## Mouse Tracking
