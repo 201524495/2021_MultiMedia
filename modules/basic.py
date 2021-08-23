@@ -220,7 +220,7 @@ class MainWindow(QDialog, tapUI.Ui_Form):
             self.plainTextEdit_33.appendPlainText(filename_33)
             print(filename_33)
 
-    def exitVideos(self, state, button):  # ???
+    def exitVideos(self, state, button):  # Close UI and Videos
         print("Exit Videos")
         if button == self.exit_pushButton_00:
             self.closeEvents()
@@ -240,8 +240,7 @@ class MainWindow(QDialog, tapUI.Ui_Form):
                                            "정말 종료 하시겠습니까?", QMessageBox.Yes, QMessageBox.No)
 
         if reply == QMessageBox.Yes:
-            sys.exit(QCoreApplication.instance().quit)
-            pass
+            sys.exit(QCoreApplication.instance().quit)  # close with all Program ( Videos, UI )
         else:
             pass
 
